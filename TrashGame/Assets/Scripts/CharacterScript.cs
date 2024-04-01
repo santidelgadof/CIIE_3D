@@ -37,7 +37,7 @@ public class CharacterScript : MonoBehaviour
         {
             if (grabbedObject != null)
             {
-                // Soltar objeto si ya se está agarrando uno
+                // Soltar objeto si ya se estï¿½ agarrando uno
 
                 ReleaseObject();
             }
@@ -93,9 +93,27 @@ public class CharacterScript : MonoBehaviour
 
     void ReleaseObject()
     {
-        grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-        Debug.Log("Objeto soltado: " + grabbedObject.name);
-        grabbedObject = null;
+
+        RaycastHit hit;
+        if (Physics.Raycast(grabbedObject.transform.position, Vector3.down, out hit))
+        {
+            // Check if the object below is named "belt"
+            if (hit.collider.CompareTag("Belt"))
+            {
+                // Object is over the belt, so release it
+                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
+                grabbedObject = null;
+            }
+            else
+            {
+                // Object is not over the belt, so don't release it
+                Debug.Log("No se puede soltar el objeto porque no estÃ¡ sobre la cinta.");
+            }
+        }
+        
+        
+        
     }
 
     private void movement()
