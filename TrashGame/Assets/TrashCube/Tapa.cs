@@ -4,6 +4,28 @@ public class Tapa : MonoBehaviour
 {
     public GameObject tapa; // Asigna la tapa del cubo de basura en el Inspector
     public string itemTag = "TrashItem"; // Etiqueta de los objetos que abrirán la tapa
+    public KeyCode keyToDrop = KeyCode.E; // Tecla para soltar el item
+
+    private bool isTapaOpen = false; // Variable para rastrear si la tapa está abierta o cerrada
+
+    private void Update()
+    {
+        // Verifica si se presiona la tecla para soltar el item
+        if (Input.GetKeyDown(keyToDrop))
+        {
+            // Verifica si la tapa está abierta
+            if (isTapaOpen)
+            {
+                // Suelta el item dentro del contenedor (puedes agregar tu lógica aquí)
+                Debug.Log("Item soltado dentro del contenedor de basura");
+            }
+            else
+            {
+                // La tapa está cerrada, no se puede soltar el item
+                Debug.Log("No se puede soltar el item porque la tapa está cerrada");
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,6 +34,7 @@ public class Tapa : MonoBehaviour
         {
             // Desactiva la tapa
             tapa.SetActive(false);
+            isTapaOpen = true;
         }
     }
 
@@ -22,6 +45,7 @@ public class Tapa : MonoBehaviour
         {
             // Activa la tapa nuevamente
             tapa.SetActive(true);
+            isTapaOpen = false;
         }
     }
 }

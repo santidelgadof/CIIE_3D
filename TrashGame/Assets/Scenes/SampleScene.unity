@@ -600,13 +600,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 772932134338397219, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Name
-      value: Garbage_Container_ (2)
+      value: Garbage3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
       objectReference: {fileID: 0}
     - target: {fileID: 1647635822312577820, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
@@ -739,6 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapa: {fileID: 338941130}
+  itemTag: TrashItem
+  keyToDrop: 101
 --- !u!65 &338941134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -760,6 +770,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.024507416, y: 0.032346934, z: 0.0286646}
   m_Center: {x: -0.00716878, y: 0.010238671, z: 0.008542493}
+--- !u!1001 &397617756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000012997751318, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_Name
+      value: Banana
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.989733
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.71296966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.9700227
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011676345262, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35e87e6a23aa37645b808887fa0958ce, type: 3}
 --- !u!1 &409651292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,13 +1082,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 772932134338397219, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Name
-      value: Garbage_Container_
+      value: Garbage1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
       objectReference: {fileID: 0}
     - target: {fileID: 1647635822312577820, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
@@ -1327,13 +1402,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 772932134338397219, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Name
-      value: Garbage_Container_ (1)
+      value: Garbage2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
       objectReference: {fileID: 0}
     - target: {fileID: 1647635822312577820, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
@@ -1462,6 +1545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapa: {fileID: 877403691}
+  itemTag: TrashItem
+  keyToDrop: 101
 --- !u!65 &877403695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1707,13 +1792,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 772932134338397219, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Name
-      value: Garbage_Container_ (3)
+      value: Garbage4
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
+      propertyPath: m_TagString
+      value: Garbage
       objectReference: {fileID: 0}
     - target: {fileID: 1647635822312577820, guid: fb3512c0526b41443bab26fec28ed177, type: 3}
       propertyPath: m_Layer
@@ -1846,6 +1939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapa: {fileID: 1032064076}
+  itemTag: TrashItem
+  keyToDrop: 101
 --- !u!65 &1032064080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2251,6 +2346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapa: {fileID: 523321857}
+  itemTag: TrashItem
+  keyToDrop: 101
 --- !u!1001 &1432554015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2613,7 +2710,8 @@ SceneRoots:
   - {fileID: 312222438}
   - {fileID: 1307210664}
   - {fileID: 638094254}
-  - {fileID: 1432554015}
   - {fileID: 877403689}
   - {fileID: 338941128}
   - {fileID: 1032064074}
+  - {fileID: 1432554015}
+  - {fileID: 397617756}
