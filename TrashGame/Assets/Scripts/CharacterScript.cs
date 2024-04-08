@@ -135,12 +135,8 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) { }
         if (Input.GetKeyDown(KeyCode.D)) { }
 
-        if (moveHorizontal == 0 && moveVertical == 0)
-        {
-            animator.SetFloat("speed", 0);
-            rb.velocity = Vector3.zero;
+        
 
-        }
 
         movement = Vector3.zero;
 
@@ -158,6 +154,18 @@ public class CharacterScript : MonoBehaviour
             movement = transform.forward * moveVertical + transform.right * moveHorizontal;
             rb.AddForce(movement.normalized * speed * 100, ForceMode.Force);
         }
+        
+
+
+        // Vector3 move = new Vector3(moveHorizontal, moveVertical).normalized; //hace que en diagonal vaya normal pero tarda en parar
+        //Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
+        //Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);//.normalized * speed;
+        if (moveHorizontal == 0 && moveVertical == 0)
+        {
+            animator.SetFloat("speed", 0);
+            rb.velocity = Vector3.zero;
+
+        }
         else if (sceneCamera.isActiveAndEnabled)
         {
             //Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
@@ -170,16 +178,6 @@ public class CharacterScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
 
         }
-
-
-
-
-
-
-        // Vector3 move = new Vector3(moveHorizontal, moveVertical).normalized; //hace que en diagonal vaya normal pero tarda en parar
-        //Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
-        //Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);//.normalized * speed;
-
 
 
         if (moveHorizontal != 0 || moveVertical != 0) { 

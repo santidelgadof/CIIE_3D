@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  smoothRot: 0.01
+  smoothRot: 0.7
   grabbableObjectLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -266,7 +266,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 10
   m_Drag: 6.05
-  m_AngularDrag: 1.09
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: -0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
