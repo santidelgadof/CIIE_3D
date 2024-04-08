@@ -107,8 +107,9 @@ public class CharacterScript : MonoBehaviour
             }
             else
             {
+                
                 // Object is not over the belt, so don't release it
-                Debug.Log("No se puede soltar el objeto porque no está sobre la cinta.");
+                
             }
         }
         

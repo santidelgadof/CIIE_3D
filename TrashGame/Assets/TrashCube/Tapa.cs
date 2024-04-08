@@ -5,6 +5,9 @@ public class Tapa : MonoBehaviour
     public GameObject tapa; // Asigna la tapa del cubo de basura en el Inspector
     public string itemTag = "TrashItem"; // Etiqueta de los objetos que abrirán la tapa
     public KeyCode keyToDrop = KeyCode.E; // Tecla para soltar el item
+    public TrashType trashType;
+
+    private Collider item;
 
     private bool isTapaOpen = false; // Variable para rastrear si la tapa está abierta o cerrada
 
@@ -17,12 +20,22 @@ public class Tapa : MonoBehaviour
             if (isTapaOpen)
             {
                 // Suelta el item dentro del contenedor (puedes agregar tu lógica aquí)
-                Debug.Log("Item soltado dentro del contenedor de basura");
+                //Debug.Log("Item soltado dentro del contenedor de basura");
+                TrashItem tI = item.GetComponent<TrashItem>();
+                if (tI.trashType == trashType) {
+                    /// TODO: Add logic on correct classification
+                    Destroy(item.gameObject);
+                } else {
+                    ///TODO: Add logic on incorrect classification
+                }
+                tapa.SetActive(true);
+                isTapaOpen = false;
+                item = null;
             }
             else
             {
                 // La tapa está cerrada, no se puede soltar el item
-                Debug.Log("No se puede soltar el item porque la tapa está cerrada");
+                //Debug.Log("No se puede soltar el item porque la tapa está cerrada");
             }
         }
     }
@@ -35,6 +48,7 @@ public class Tapa : MonoBehaviour
             // Desactiva la tapa
             tapa.SetActive(false);
             isTapaOpen = true;
+            item = other;
         }
     }
 
@@ -46,6 +60,7 @@ public class Tapa : MonoBehaviour
             // Activa la tapa nuevamente
             tapa.SetActive(true);
             isTapaOpen = false;
+            item = null;
         }
     }
 }

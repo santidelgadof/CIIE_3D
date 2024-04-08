@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 65440559600974806}
   - component: {fileID: 4199652441620486370}
   - component: {fileID: 7745777903347633557}
+  - component: {fileID: 1913033110243288459}
   m_Layer: 6
   m_Name: Cola Can
   m_TagString: TrashItem
@@ -132,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!65 &7745777903347633557
 BoxCollider:
@@ -155,3 +156,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.09494366, y: 0.15346396, z: 0.09029679}
   m_Center: {x: 0.000000007450581, y: 0.07673198, z: -0.000000007450581}
+--- !u!114 &1913033110243288459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705129010167144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ef0cafcba144e9492701b2a93f3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashType: 1

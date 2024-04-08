@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000011893091146}
   - component: {fileID: 6767412029293749267}
   - component: {fileID: 7833907103644203466}
+  - component: {fileID: 5058543175985182390}
   m_Layer: 6
   m_Name: Croissant
   m_TagString: TrashItem
@@ -133,3 +134,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12597412, y: 0.044815406, z: 0.084779404}
   m_Center: {x: 0, y: -9.313226e-10, z: -0.0000000037252903}
+--- !u!114 &5058543175985182390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011100452964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ef0cafcba144e9492701b2a93f3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashType: 0

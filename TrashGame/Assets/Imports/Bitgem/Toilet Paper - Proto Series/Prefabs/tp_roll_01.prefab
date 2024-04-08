@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7415273526459659969}
   - component: {fileID: 7415273526472647265}
+  - component: {fileID: 7401042081423134619}
   m_Layer: 6
   m_Name: tp_roll_01
   m_TagString: TrashItem
@@ -60,6 +61,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7415273526457365541}
   m_Enabled: 0
+--- !u!114 &7401042081423134619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415273526459624161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ef0cafcba144e9492701b2a93f3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashType: 2
 --- !u!1 &7415273526459624167
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,6 +87,7 @@ GameObject:
   - component: {fileID: 7415273526457365541}
   - component: {fileID: 4738581343914220294}
   - component: {fileID: 3808219123217199816}
+  - component: {fileID: 7724675551887762391}
   m_Layer: 6
   m_Name: tp_roll_01_LOD2
   m_TagString: TrashItem
@@ -193,3 +208,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0692788, y: 1.0007991, z: 1.0703849}
   m_Center: {x: -0.00000023841858, y: 0.00039952993, z: 0.0005376935}
+--- !u!114 &7724675551887762391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415273526459624167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ef0cafcba144e9492701b2a93f3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashType: 2
