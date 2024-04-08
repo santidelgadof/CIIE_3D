@@ -30,16 +30,16 @@ public class CharacterScript : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    [SerializeField] private Camera playerCamera;
-    [SerializeField] private Camera sceneCamera;
+    [SerializeField] private GameObject playerCamera;
+    [SerializeField] private GameObject sceneCamera;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        sceneCamera.enabled = true;
-        playerCamera.enabled = false;
-      
+        sceneCamera.SetActive(true);
+        playerCamera.SetActive(false);
+
     }
 
     private void Start()
@@ -71,8 +71,8 @@ public class CharacterScript : MonoBehaviour
         //Switch cameras
         if (Input.GetKeyDown(KeyCode.K))
         {
-            sceneCamera.enabled = !sceneCamera.enabled;
-            playerCamera.enabled = !playerCamera.enabled;
+            sceneCamera.SetActive(!sceneCamera.activeSelf);
+            playerCamera.SetActive(!playerCamera.activeSelf);
         }
         if (grabbedObject != null)
         {
@@ -140,7 +140,7 @@ public class CharacterScript : MonoBehaviour
 
         movement = Vector3.zero;
 
-        if (playerCamera.isActiveAndEnabled)
+        if (playerCamera.activeSelf)
         {
             //Debug.Log("cameraActive");
             float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
@@ -166,9 +166,9 @@ public class CharacterScript : MonoBehaviour
             rb.velocity = Vector3.zero;
 
         }
-        else if (sceneCamera.isActiveAndEnabled)
+        else if (sceneCamera.activeSelf)
         {
-            //Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
+            //movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
             movement = new Vector3(moveHorizontal, 0, moveVertical);
             rb.AddForce(movement.normalized * speed * 100, ForceMode.Force);
 

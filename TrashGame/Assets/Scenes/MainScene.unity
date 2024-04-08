@@ -254,8 +254,8 @@ MonoBehaviour:
   grabPos: {fileID: 231954656}
   sensX: 400
   sensY: 400
-  playerCamera: {fileID: 901747093}
-  sceneCamera: {fileID: 963194227}
+  playerCamera: {fileID: 901747090}
+  sceneCamera: {fileID: 963194225}
 --- !u!54 &115402524
 Rigidbody:
   m_ObjectHideFlags: 0
