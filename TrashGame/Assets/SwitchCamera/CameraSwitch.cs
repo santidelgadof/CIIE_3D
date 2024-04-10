@@ -4,33 +4,20 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public GameObject camera1;
-    public GameObject camera2;
-    public int manager;
+   
+    private bool manager = false;
 
-    public void ManageCamera()
+    private Animator animator;
+
+    private void Start()
     {
-        if (manager == 0)
-        {
-            Cam2();
-            manager = 1;
-        }
-        else
-        {
-            Cam1();
-            manager = 0;
-        }
+        animator = GetComponent<Animator>();
     }
 
-    void Cam1()
+    public void CameraSwitched()
     {
-        camera1.SetActive(true);
-        camera2.SetActive(false);
-    }
-
-    void Cam2()
-    {
-        camera1.SetActive(false);
-        camera2.SetActive(true);
+        manager = !manager;
+        animator.SetBool("CameraSwitch", manager);
+        
     }
 }

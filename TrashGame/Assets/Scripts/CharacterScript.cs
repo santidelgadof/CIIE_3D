@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 
 
@@ -16,8 +18,8 @@ public class CharacterScript : MonoBehaviour
     private float currentVel;
 
     [SerializeField] private LayerMask grabbableObjectLayer;
-    [SerializeField] private GameObject grabBox;
-    [SerializeField] private Transform grabPos;
+    private GameObject grabBox;
+    private Transform grabPos;
     private Vector3 grabOffset;
     private Collider grabbedObject;
 
@@ -30,13 +32,19 @@ public class CharacterScript : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    [SerializeField] private GameObject playerCamera;
-    [SerializeField] private GameObject sceneCamera;
+    private GameObject playerCamera;
+    private GameObject sceneCamera;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        grabBox = GameObject.Find("GrabCollider");
+        grabPos = transform.Find("GrabPosition");
+
+        playerCamera = GameObject.Find("PlayerCamera");
+        sceneCamera = GameObject.Find("Main Camera");
         sceneCamera.SetActive(true);
         playerCamera.SetActive(false);
 
@@ -71,6 +79,7 @@ public class CharacterScript : MonoBehaviour
         //Switch cameras
         if (Input.GetKeyDown(KeyCode.K))
         {
+            //CameraSwitch.CameraSwitched();
             sceneCamera.SetActive(!sceneCamera.activeSelf);
             playerCamera.SetActive(!playerCamera.activeSelf);
         }
@@ -92,10 +101,10 @@ public class CharacterScript : MonoBehaviour
     private void TryGrabObject()
     {
         Collider[] colliders = Physics.OverlapBox(grabBox.transform.position, grabBox.transform.lossyScale, grabBox.transform.rotation, grabbableObjectLayer);
-        Debug.Log(colliders.Length);
+        //Debug.Log(colliders.Length);
         if (colliders.Length > 0)
         {
-            Debug.Log("objs encontrados");
+            //Debug.Log("objs encontrados");
             float closestDist = 20;
 
             Collider closestObject = null; 
@@ -112,7 +121,7 @@ public class CharacterScript : MonoBehaviour
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                 grabOffset = grabbedObject.transform.position - grabPos.position;
 
-                Debug.Log("Objeto agarrado: " + grabbedObject.name);
+                //Debug.Log("Objeto agarrado: " + grabbedObject.name);
             }
         }
     }
@@ -120,7 +129,7 @@ public class CharacterScript : MonoBehaviour
     void ReleaseObject()
     {
         grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-        Debug.Log("Objeto soltado: " + grabbedObject.name);
+        //Debug.Log("Objeto soltado: " + grabbedObject.name);
         grabbedObject = null;
     }
 
@@ -151,26 +160,27 @@ public class CharacterScript : MonoBehaviour
 
             playerCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
             transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
-            movement = transform.forward * moveVertical + transform.right * moveHorizontal;
-            rb.AddForce(movement.normalized * speed * 100, ForceMode.Force);
-        }
-        
 
+            movement = transform.forward * moveVertical + transform.right * moveHorizontal;
+            rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
+        }
 
         // Vector3 move = new Vector3(moveHorizontal, moveVertical).normalized; //hace que en diagonal vaya normal pero tarda en parar
         //Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
         //Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);//.normalized * speed;
+
         if (moveHorizontal == 0 && moveVertical == 0)
         {
             animator.SetFloat("speed", 0);
             rb.velocity = Vector3.zero;
 
         }
+
         else if (sceneCamera.activeSelf)
         {
             //movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
             movement = new Vector3(moveHorizontal, 0, moveVertical);
-            rb.AddForce(movement.normalized * speed * 100, ForceMode.Force);
+            rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
 
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVel, smoothRot);
