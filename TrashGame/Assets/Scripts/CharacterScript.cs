@@ -98,18 +98,20 @@ public class CharacterScript : MonoBehaviour
         if (Physics.Raycast(grabbedObject.transform.position, Vector3.down, out hit))
         {
             // Check if the object below is named "belt"
-            if (hit.collider.CompareTag("Belt"))
-            {
-                // Object is over the belt, so release it
-                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
-                grabbedObject = null;
-            }
-            else
-            {
-                
-                // Object is not over the belt, so don't release it
-                
+            if (grabbedObject.CompareTag("TrashItem")) {
+                if (hit.collider.CompareTag("Belt"))
+                {
+                    // Object is over the belt, so release it
+                    grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
+                    grabbedObject = null;
+                }
+                else
+                {
+                    
+                    // Object is not over the belt, so don't release it
+                    
+                }
             }
         }
         
@@ -138,5 +140,13 @@ public class CharacterScript : MonoBehaviour
         rb.velocity = movement;
 
         animator.SetFloat("speed", 0.2f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("TrashItem"))
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
     }
 }

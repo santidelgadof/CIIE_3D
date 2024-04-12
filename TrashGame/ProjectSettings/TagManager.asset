@@ -7,6 +7,7 @@ TagManager:
   - TrashItem
   - Belt
   - Garbage
+  - TrashBag
   layers:
   - Default
   - TransparentFX
