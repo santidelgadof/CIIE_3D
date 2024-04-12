@@ -48,43 +48,62 @@ public class CharacterScript : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = true;
     }
 
 
     void Update()
     {
-        movement();
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!PauseMenu.isGamePaused)
         {
+            movement();
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (grabbedObject != null)
+                {
+                    // Soltar objeto si ya se est� agarrando uno
+
+                    ReleaseObject();
+                }
+                else
+                {
+
+                    // Intentar agarrar un nuevo objeto
+                    TryGrabObject();
+                }
+            }
+            //Switch cameras
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                //CameraSwitch.CameraSwitched();
+                sceneCamera.SetActive(!sceneCamera.activeSelf);
+                playerCamera.SetActive(!playerCamera.activeSelf);
+            }
             if (grabbedObject != null)
             {
-                // Soltar objeto si ya se est� agarrando uno
+                moveGrabbedObject();
+            }
 
-                ReleaseObject();
+            if (playerCamera.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
-
-                // Intentar agarrar un nuevo objeto
-                TryGrabObject();
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
             }
         }
-        //Switch cameras
-        if (Input.GetKeyDown(KeyCode.K))
+        else
         {
-            //CameraSwitch.CameraSwitched();
-            sceneCamera.SetActive(!sceneCamera.activeSelf);
-            playerCamera.SetActive(!playerCamera.activeSelf);
-        }
-        if (grabbedObject != null)
-        {
-            moveGrabbedObject();
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
-
+    
     private void moveGrabbedObject()
     {
         if (grabbedObject != null)
