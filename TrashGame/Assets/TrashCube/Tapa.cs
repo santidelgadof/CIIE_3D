@@ -62,7 +62,7 @@ public class Tapa : MonoBehaviour
     private void Update()
     {
         
-        
+        /// Check if the user is close to Self.
         if (playerDetector.IsUserHere) {
             isTapaOpen = true;
             tapa.SetActive(false);
@@ -71,32 +71,30 @@ public class Tapa : MonoBehaviour
             tapa.SetActive(true);
         }
         
-        // Verifica si se presiona la tecla para soltar el item
+        // When the user presses the defined key:
         if (Input.GetKeyDown(keyToDrop))
         {
-            // Verifica si la tapa está abierta
+            
             if (isTapaOpen)
             {
-                // Suelta el item dentro del contenedor (puedes agregar tu lógica aquí)
-                //Debug.Log("Item soltado dentro del contenedor de basura");
-                if (item != null) {
+                if (item != null) { /// Drop the item inside the container.                    
                     TrashItem tI = item.GetComponent<TrashItem>();
-                    if (tI.trashType == trashType) {
-                        /// TODO: Add logic on correct classification
+                    if (tI.trashType == trashType) { /// Correct classification                        
                         if (amountAlreadyIn + 1 <= capacity) {
+                            /// Container has enough space.
                             amountAlreadyIn += 1;
                             Destroy(item.gameObject);                
                             UpdateUI();
                         } 
-                    } else {
+                    } else { /// Wrong classification
                         amountAlreadyIn -= penalization;
                         if (amountAlreadyIn < 0)
                             amountAlreadyIn = 0;
                         Destroy(item.gameObject);  
                         UpdateUI();
                     }
-                } else {
-                    if (amountAlreadyIn == capacity) {
+                } else { /// The player is not carrying a TrashItem.
+                    if (amountAlreadyIn == capacity) { /// The container is filled.
                     Vector3 spawnPosition = transform.position;
                     if (trashType == TrashType.Organic || trashType == TrashType.Inorganic)
                     {
@@ -149,8 +147,9 @@ public class Tapa : MonoBehaviour
         
     }
 
-   
-
+    /// <summary>
+    /// Updates the indicators with the new data.
+    /// </summary>
     private void UpdateUI()
     {
         float fillAmount = (float)amountAlreadyIn / capacity;

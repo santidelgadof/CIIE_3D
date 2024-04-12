@@ -54,6 +54,9 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates and sets the new position for the Grabbed Object
+    /// </summary>
     private void moveGrabbedObject()
     {
         if (grabbedObject != null)
@@ -63,6 +66,9 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The character tries to grab an object. 
+    /// </summary>
     private void TryGrabObject()
     {
         Collider[] colliders = Physics.OverlapBox(grabBox.transform.position, grabBox.transform.lossyScale, grabBox.transform.rotation, grabbableObjectLayer);
@@ -91,6 +97,9 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The character tries to release an object.
+    /// </summary>
     void ReleaseObject()
     {
 
@@ -119,6 +128,9 @@ public class CharacterScript : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Calculates and sets the movement of the character.
+    /// </summary>
     private void movement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -142,6 +154,10 @@ public class CharacterScript : MonoBehaviour
         animator.SetFloat("speed", 0.2f);
     }
 
+    /// <summary>
+    /// Ignores collisions with TrashItems.
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("TrashItem"))

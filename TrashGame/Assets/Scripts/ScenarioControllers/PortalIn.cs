@@ -13,6 +13,10 @@ public class PortalIn : MonoBehaviour
         StartCoroutine(SpawnTrashItemRoutine());
     }
 
+    /// <summary>
+    /// Spawns TrashItems with a one second delay between spawns
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SpawnTrashItemRoutine()
     {
         while (true) // This will keep spawning TrashItems indefinitely
@@ -22,7 +26,10 @@ public class PortalIn : MonoBehaviour
             yield return new WaitForSeconds(spawnTime); // Adjust the interval as needed
         }
     }
-
+    /// <summary>
+    /// Spawns a TrashItem
+    /// </summary>
+    /// <param name="trashItemPrefab"></param>
     void SpawnTrashItem(GameObject trashItemPrefab)
     {
         Vector3 spawnPosition = transform.position + new Vector3(-1f, 0f, 0f); // Offset by -10 on the X-axis relative to the PortalIn object
