@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.UI;
 using UnityEngine;
 
 
@@ -17,6 +18,8 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] private LayerMask grabbableObjectLayer;
     [SerializeField] private GameObject grabBox;
     [SerializeField] private Transform grabPos;
+
+    private int totalPuntuation;
     private Vector3 grabOffset;
     private Collider grabbedObject;
 
@@ -26,6 +29,7 @@ public class CharacterScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        totalPuntuation = 0;
     }
 
     
@@ -54,6 +58,9 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates and sets the new position for the Grabbed Object
+    /// </summary>
     private void moveGrabbedObject()
     {
         if (grabbedObject != null)
@@ -63,6 +70,9 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The character tries to grab an object. 
+    /// </summary>
     private void TryGrabObject()
     {
         Collider[] colliders = Physics.OverlapBox(grabBox.transform.position, grabBox.transform.lossyScale, grabBox.transform.rotation, grabbableObjectLayer);
@@ -91,6 +101,9 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The character tries to release an object.
+    /// </summary>
     void ReleaseObject()
     {
 
@@ -98,18 +111,20 @@ public class CharacterScript : MonoBehaviour
         if (Physics.Raycast(grabbedObject.transform.position, Vector3.down, out hit))
         {
             // Check if the object below is named "belt"
-            if (hit.collider.CompareTag("Belt"))
-            {
-                // Object is over the belt, so release it
-                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
-                grabbedObject = null;
-            }
-            else
-            {
-                
-                // Object is not over the belt, so don't release it
-                
+            if (grabbedObject.CompareTag("TrashItem")) {
+                if (hit.collider.CompareTag("Belt"))
+                {
+                    // Object is over the belt, so release it
+                    grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
+                    grabbedObject = null;
+                }
+                else
+                {
+                    
+                    // Object is not over the belt, so don't release it
+                    
+                }
             }
         }
         
@@ -117,6 +132,9 @@ public class CharacterScript : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Calculates and sets the movement of the character.
+    /// </summary>
     private void movement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -138,5 +156,25 @@ public class CharacterScript : MonoBehaviour
         rb.velocity = movement;
 
         animator.SetFloat("speed", 0.2f);
+    }
+
+    /// <summary>
+    /// Ignores collisions with TrashItems.
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("TrashItem"))
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
+    }
+
+    public void Point() {
+        this.totalPuntuation += 100;
+    }
+
+    public int GetTotalPuntuation() {
+        return totalPuntuation;
     }
 }

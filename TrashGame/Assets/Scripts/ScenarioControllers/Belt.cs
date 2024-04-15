@@ -31,7 +31,10 @@ public class Belt : MonoBehaviour
     {
         
     }
-
+    /// <summary>
+    /// Handles the movement of the items over the belt.
+    /// </summary>
+    /// <param name="collision"></param>
     void OnCollisionStay(Collision collision) {
 
         if ( collision.gameObject.tag == "TrashItem") {
