@@ -48,8 +48,8 @@ public class CharacterScript : MonoBehaviour
 
     private void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 
@@ -97,7 +97,14 @@ public class CharacterScript : MonoBehaviour
                 Cursor.visible = true;
             }
         }
-        else
+        //Switch cameras
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            //CameraSwitch.CameraSwitched();
+            sceneCamera.SetActive(!sceneCamera.activeSelf);
+            playerCamera.SetActive(!playerCamera.activeSelf);
+        }
+        if (grabbedObject != null)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
