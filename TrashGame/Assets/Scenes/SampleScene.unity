@@ -4057,7 +4057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9200417707930478897, guid: 9f0b5713b7412ab4eb37110128bbc164, type: 3}
       propertyPath: m_Name
-      value: mini chibi kid animations
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9200417707930478897, guid: 9f0b5713b7412ab4eb37110128bbc164, type: 3}
       propertyPath: m_TagString
