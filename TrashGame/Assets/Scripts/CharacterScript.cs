@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.UI;
 using UnityEngine;
 
 
@@ -17,6 +18,8 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] private LayerMask grabbableObjectLayer;
     [SerializeField] private GameObject grabBox;
     [SerializeField] private Transform grabPos;
+
+    private int totalPuntuation;
     private Vector3 grabOffset;
     private Collider grabbedObject;
 
@@ -26,6 +29,7 @@ public class CharacterScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        totalPuntuation = 0;
     }
 
     
@@ -164,5 +168,13 @@ public class CharacterScript : MonoBehaviour
         {
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
+    }
+
+    public void Point() {
+        this.totalPuntuation += 100;
+    }
+
+    public int GetTotalPuntuation() {
+        return totalPuntuation;
     }
 }

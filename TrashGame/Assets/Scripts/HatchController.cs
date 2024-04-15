@@ -11,11 +11,12 @@ public class NewBehaviourScript : MonoBehaviour
     
     public float rotationAngle = 60f;
     public float movementOffset = 0.5f;
-    
+     private CharacterScript player;
     void Start()
     {
         defaultPosition = transform.position;
         defaultRotation = transform.rotation;
+        player = GameObject.Find("Player").GetComponent<CharacterScript>();
     }
 
     
@@ -32,6 +33,7 @@ public class NewBehaviourScript : MonoBehaviour
             
             isOpen = true;
             Destroy(other.gameObject);
+            player.Point();
             StartCoroutine(ResetIsOpenAfterDelay(1.5f)); 
             
         }

@@ -24,11 +24,14 @@ public class Tapa : MonoBehaviour
     private TMP_Text itemCountText;
     private Image progressBar;
 
+    private CharacterScript player;
+
     private bool isTapaOpen = false; // Variable para rastrear si la tapa está abierta o cerrada
 
     
      private void Start()
     {
+        player = GameObject.Find("Player").GetComponent<CharacterScript>();
         switch (trashType)
         {
             case TrashType.Organic:
