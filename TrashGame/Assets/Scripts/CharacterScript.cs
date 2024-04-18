@@ -10,6 +10,7 @@ using UnityEngine;
 public class CharacterScript : MonoBehaviour
 {
     private Rigidbody rb;
+    private Vector3 originalGrabbedObjectPosition;
 
     [SerializeField] private float speed;
     [SerializeField] private float smoothRot = 0.05f;
@@ -24,11 +25,13 @@ public class CharacterScript : MonoBehaviour
     private Collider grabbedObject;
 
     private Animator animator;
+    private MouseAI mouseAI;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        mouseAI = FindObjectOfType<MouseAI>();
         totalPuntuation = 0;
     }
 
@@ -52,6 +55,18 @@ public class CharacterScript : MonoBehaviour
                 TryGrabObject();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F) && grabbedObject != null && grabbedObject.CompareTag("escoba"))
+        {
+            // Verificar si el ratón está cerca
+            if (Vector3.Distance(transform.position, mouseAI.transform.position) < 2f)
+            {
+                // "Matar" al ratón deteniendo su movimiento
+                mouseAI.SetMouseStopped(true);
+                Debug.Log("¡Ratón muerto!");
+            }
+        }
+
         if (grabbedObject != null)
         {
             moveGrabbedObject();
@@ -95,6 +110,7 @@ public class CharacterScript : MonoBehaviour
                 grabbedObject = closestObject;
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                 grabOffset = grabbedObject.transform.position - grabPos.position;
+                originalGrabbedObjectPosition = grabbedObject.transform.position;
 
                 Debug.Log("Objeto agarrado: " + grabbedObject.name);
             }
@@ -110,22 +126,34 @@ public class CharacterScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(grabbedObject.transform.position, Vector3.down, out hit))
         {
+            // Si el objeto tiene la etiqueta "Escoba", lo soltamos independientemente de su posición
+            if (grabbedObject.CompareTag("escoba")||grabbedObject.CompareTag("bag") && !hit.collider.CompareTag("Belt"))
+            {
+                if (grabbedObject.CompareTag("escoba"))
+                {
+                    grabbedObject.transform.position = originalGrabbedObjectPosition;
+                }
+                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                grabbedObject = null;
+                return;
+            } 
+
+
             // Check if the object below is named "belt"
-            if (grabbedObject.CompareTag("TrashItem")) {
-                if (hit.collider.CompareTag("Belt"))
-                {
-                    // Object is over the belt, so release it
-                    grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
-                    grabbedObject = null;
-                }
-                else
-                {
-                    
-                    // Object is not over the belt, so don't release it
-                    
-                }
+            if (hit.collider.CompareTag("Belt") && !grabbedObject.CompareTag("bag"))
+            {
+                // Object is over the belt, so release it
+                grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
+                grabbedObject = null;
             }
+            else
+            {
+                    
+                // Object is not over the belt, so don't release it
+                    
+            }
+            
         }
         
         

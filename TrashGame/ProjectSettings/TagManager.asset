@@ -9,6 +9,9 @@ TagManager:
   - Garbage
   - TrashBag
   - Hole
+  - bag
+  - escoba
+  - raton
   layers:
   - Default
   - TransparentFX
