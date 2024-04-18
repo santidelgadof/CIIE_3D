@@ -208,25 +208,22 @@ public class CharacterScript : MonoBehaviour
         if (moveHorizontal == 0 && moveVertical == 0)
         {
             animator.SetFloat("speed", 0);
-            rb.velocity = Vector3.zero;
-            return;
+            
         }
-
-        // Vector3 move = new Vector3(moveHorizontal, moveVertical).normalized; //hace que en diagonal vaya normal pero tarda en parar
-        movement = new Vector3(moveHorizontal, 0, moveVertical);
-        rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
-
-        float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVel, smoothRot);
-
-        transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
-
-        if (moveHorizontal != 0 || moveVertical != 0)
+        else if (moveHorizontal != 0 || moveVertical != 0)
         {
-            rb.velocity = movement;
+            
+            movement = new Vector3(moveHorizontal, 0, moveVertical);
+            rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
+
+            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVel, smoothRot);
+
+            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
 
             animator.SetFloat("speed", 0.2f);
         }
+        rb.velocity = movement;
     }
 
     /// <summary>
