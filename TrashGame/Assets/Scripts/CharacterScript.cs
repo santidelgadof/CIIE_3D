@@ -16,12 +16,21 @@ public class CharacterScript : MonoBehaviour
     private float currentVel;
 
     [SerializeField] private LayerMask grabbableObjectLayer;
-    [SerializeField] private GameObject grabBox;
-    [SerializeField] private Transform grabPos;
-
-    private int totalPuntuation;
+    private GameObject grabBox;
+    private Transform grabPos;
     private Vector3 grabOffset;
     private Collider grabbedObject;
+
+    private int totalPuntuation;
+
+    //First person camera rotation
+    //[SerializeField] private float sensX = 400;
+    //[SerializeField] private float sensY = 400;
+    //float xRotation;
+    //float yRotation;
+
+    //private GameObject playerCamera;
+    //private GameObject sceneCamera;
 
     private Animator animator;
 
@@ -30,32 +39,72 @@ public class CharacterScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         totalPuntuation = 0;
+        grabBox = GameObject.Find("GrabCollider");
+        grabPos = transform.Find("GrabPosition");
+
+        //playerCamera = GameObject.Find("PlayerCamera");
+        //sceneCamera = GameObject.Find("Main Camera");
+        //sceneCamera.SetActive(true);
+        //playerCamera.SetActive(false);
     }
 
     
     void Update()
     {
-        movement();
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!PauseMenu.isGamePaused)
         {
+            movement();
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (grabbedObject != null)
+                {
+                    // Soltar objeto si ya se est� agarrando uno
+
+                    ReleaseObject();
+                }
+                else
+                {
+
+                    // Intentar agarrar un nuevo objeto
+                    TryGrabObject();
+                }
+            }
             if (grabbedObject != null)
             {
-                // Soltar objeto si ya se est� agarrando uno
+                moveGrabbedObject();
+            }
 
-                ReleaseObject();
+            /*
+            //Switch cameras
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                //CameraSwitch.CameraSwitched();
+                sceneCamera.SetActive(!sceneCamera.activeSelf);
+                playerCamera.SetActive(!playerCamera.activeSelf);
+            }
+            if (grabbedObject != null)
+            {
+                moveGrabbedObject();
+            }
+
+            if (playerCamera.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }*/
 
-                // Intentar agarrar un nuevo objeto
-                TryGrabObject();
-            }
         }
-        if (grabbedObject != null)
+        /*else
         {
-            moveGrabbedObject();
-        }
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }*/
     }
 
     /// <summary>
@@ -76,10 +125,10 @@ public class CharacterScript : MonoBehaviour
     private void TryGrabObject()
     {
         Collider[] colliders = Physics.OverlapBox(grabBox.transform.position, grabBox.transform.lossyScale, grabBox.transform.rotation, grabbableObjectLayer);
-        Debug.Log(colliders.Length);
+        //Debug.Log(colliders.Length);
         if (colliders.Length > 0)
         {
-            Debug.Log("objs encontrados");
+            //Debug.Log("objs encontrados");
             float closestDist = 20;
 
             Collider closestObject = null; 
@@ -96,7 +145,7 @@ public class CharacterScript : MonoBehaviour
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                 grabOffset = grabbedObject.transform.position - grabPos.position;
 
-                Debug.Log("Objeto agarrado: " + grabbedObject.name);
+                //Debug.Log("Objeto agarrado: " + grabbedObject.name);
             }
         }
     }
@@ -116,7 +165,7 @@ public class CharacterScript : MonoBehaviour
                 {
                     // Object is over the belt, so release it
                     grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
+                    //Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
                     grabbedObject = null;
                 }
                 else
@@ -139,23 +188,45 @@ public class CharacterScript : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        Vector3 movement = Vector3.zero;
+
+        /*if (playerCamera.activeSelf)
+        {
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Math.Clamp(xRotation, -90f, 90f);
+
+            playerCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
+
+            movement = transform.forward * moveVertical + transform.right * moveHorizontal;
+            rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
+        }*/
 
         if (moveHorizontal == 0 && moveVertical == 0)
         {
             animator.SetFloat("speed", 0);
+            rb.velocity = Vector3.zero;
             return;
         }
-        
+
         // Vector3 move = new Vector3(moveHorizontal, moveVertical).normalized; //hace que en diagonal vaya normal pero tarda en parar
-        Vector3 movement = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
+        movement = new Vector3(moveHorizontal, 0, moveVertical);
+        rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
 
         float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVel, smoothRot);
 
         transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
-        rb.velocity = movement;
 
-        animator.SetFloat("speed", 0.2f);
+        if (moveHorizontal != 0 || moveVertical != 0)
+        {
+            rb.velocity = movement;
+
+            animator.SetFloat("speed", 0.2f);
+        }
     }
 
     /// <summary>
