@@ -12,7 +12,7 @@ public class CharacterScript : MonoBehaviour
     private Rigidbody rb;
     private Vector3 originalGrabbedObjectPosition;
 
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 10;
     [SerializeField] private float smoothRot = 0.05f;
     private float currentVel;
 
@@ -215,9 +215,19 @@ public class CharacterScript : MonoBehaviour
     /// </summary>
     private void movement()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = 0f;
+        float moveVertical = 0f;
         Vector3 movement = Vector3.zero;
+        float inputThreshold = 0.1f; // Umbral para considerar la entrada de movimiento
+
+        // Verificar tecla "A"
+        if (Input.GetKey(KeyCode.A)) { moveHorizontal = -1f; }
+        // Verificar tecla "D"
+        if (Input.GetKey(KeyCode.D)) { moveHorizontal = 1f; }
+        // Verificar tecla "W"
+        if (Input.GetKey(KeyCode.W)) { moveVertical = 1f; }
+        // Verificar tecla "S"
+        if (Input.GetKey(KeyCode.S)) { moveVertical = -1f; }
 
         /*if (playerCamera.activeSelf)
         {
@@ -234,16 +244,17 @@ public class CharacterScript : MonoBehaviour
             rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
         }*/
 
-        if (moveHorizontal == 0 && moveVertical == 0)
+        if (Mathf.Abs(moveHorizontal) < inputThreshold && Mathf.Abs(moveVertical) < inputThreshold)
         {
             animator.SetFloat("speed", 0);
-            
+            rb.velocity = Vector3.zero;
+            //rb.AddForce(0, 0, 0);
         }
-        else if (moveHorizontal != 0 || moveVertical != 0)
+        else
         {
-            
-            movement = new Vector3(moveHorizontal, 0, moveVertical);
-            rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
+
+            movement = new Vector3(moveHorizontal, 0, moveVertical).normalized * speed;
+            rb.velocity = movement;
 
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVel, smoothRot);
@@ -252,7 +263,6 @@ public class CharacterScript : MonoBehaviour
 
             animator.SetFloat("speed", 0.2f);
         }
-        rb.velocity = movement;
     }
 
     /// <summary>
