@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 
@@ -283,5 +284,13 @@ public class CharacterScript : MonoBehaviour
 
     public int GetTotalPuntuation() {
         return totalPuntuation;
+    }
+
+    public GameObject GetGrabbedObject() {
+        if (grabbedObject != null){
+        return grabbedObject.gameObject;
+        } else {
+            return null;
+        }
     }
 }

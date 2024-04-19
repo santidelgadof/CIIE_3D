@@ -66,10 +66,10 @@ public class Tapa : MonoBehaviour
     {
         
         /// Check if the user is close to Self.
-        if (playerDetector.IsUserHere) {
+        if (playerDetector.IsUserHere && amountAlreadyIn == capacity) {
             isTapaOpen = true;
             tapa.SetActive(false);
-        } else {
+        } else if (!playerDetector.IsUserHere && amountAlreadyIn == capacity) {
             isTapaOpen = false;
             tapa.SetActive(true);
         }
