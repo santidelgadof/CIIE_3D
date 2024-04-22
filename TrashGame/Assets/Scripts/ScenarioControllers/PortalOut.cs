@@ -5,7 +5,7 @@ using UnityEngine;
 public class PortalOut : MonoBehaviour
 {
 
-    private CharacterScript characterScript;
+    [SerializeField] private CharacterScript characterScript;
     private void Start()
     {
     characterScript = GameObject.Find("Player").GetComponent<CharacterScript>();
@@ -14,19 +14,28 @@ public class PortalOut : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (characterScript.GetGrabbedObject() != null ) {
-        if (!GameObject.ReferenceEquals(other.gameObject, characterScript.GetGrabbedObject())) {
-        // Check if the exiting collider belongs to a TrashItem
-        if (other.CompareTag("TrashItem"))
-        {
-            // Destroy the TrashItem game object
-            Destroy(other.gameObject);
-        }
-        }
+            if (!GameObject.ReferenceEquals(other.gameObject, characterScript.GetGrabbedObject())) {
+            // Check if the exiting collider belongs to a TrashItem
+                if (other.CompareTag("TrashItem"))
+                {
+                    // Destroy the TrashItem game object
+                    Destroy(other.gameObject);
+                    if (characterScript != null)
+                    {
+                        characterScript.LoseLife();
+                    }
+                    
+                }
+            }
         } else {
             if (other.CompareTag("TrashItem"))
         {
             // Destroy the TrashItem game object
             Destroy(other.gameObject);
+            if (characterScript != null)
+            {
+                characterScript.LoseLife();
+            }
         }
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class CharacterScript : MonoBehaviour
     private Rigidbody rb;
     private Vector3 originalGrabbedObjectPosition;
 
+    [SerializeField] private int lives = 5;  
+    [SerializeField] private List<GameObject> heartImages;
+
     [SerializeField] private float speed = 10;
     [SerializeField] private float smoothRot = 0.05f;
     private float currentVel;
@@ -23,7 +27,8 @@ public class CharacterScript : MonoBehaviour
     private Vector3 grabOffset;
     private Collider grabbedObject;
 
-    private int totalPuntuation;
+    [SerializeField] private int totalPuntuation;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     //First person camera rotation
     //[SerializeField] private float sensX = 400;
@@ -91,6 +96,7 @@ public class CharacterScript : MonoBehaviour
             {
                 moveGrabbedObject();
             }
+            UpdateScoreUI();
 
             /*
             //Switch cameras
@@ -291,6 +297,35 @@ public class CharacterScript : MonoBehaviour
         return grabbedObject.gameObject;
         } else {
             return null;
+        }
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + totalPuntuation.ToString();
+        else
+            Debug.LogError("Score TextMeshProUGUI reference not set in the inspector.");
+    }
+
+    public void LoseLife()
+    {
+        if (lives > 0)
+        {
+            lives--;
+            UpdateHeartsUI();
+        }
+        else
+        {
+            Debug.Log("Game Over!");
+        }
+    }
+
+    private void UpdateHeartsUI()
+    {
+        for (int i = 0; i < heartImages.Count; i++)
+        {
+            heartImages[i].SetActive(i <= lives);
         }
     }
 }
