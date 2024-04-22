@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.UI;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -23,6 +24,7 @@ public class CharacterScript : MonoBehaviour
 
     [SerializeField] private LayerMask grabbableObjectLayer;
     private GameObject grabBox;
+    public GameObject loseCanvas;
     private Transform grabPos;
     private Vector3 grabOffset;
     private Collider grabbedObject;
@@ -51,6 +53,7 @@ public class CharacterScript : MonoBehaviour
 
         grabBox = GameObject.Find("GrabCollider");
         grabPos = transform.Find("GrabPosition");
+        Time.timeScale = 1;
 
         //playerCamera = GameObject.Find("PlayerCamera");
         //sceneCamera = GameObject.Find("Main Camera");
@@ -67,6 +70,7 @@ public class CharacterScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                
                 if (grabbedObject != null)
                 {
                     // Soltar objeto si ya se est� agarrando uno
@@ -310,22 +314,27 @@ public class CharacterScript : MonoBehaviour
 
     public void LoseLife()
     {
-        if (lives > 0)
+        if (lives > 1)
         {
             lives--;
             UpdateHeartsUI();
         }
         else
         {
-            Debug.Log("Game Over!");
+            lives--;
+            UpdateHeartsUI();
+            loseCanvas.SetActive(true);
+            Time.timeScale = 0;
         }
+
+        
     }
 
     private void UpdateHeartsUI()
     {
         for (int i = 0; i < heartImages.Count; i++)
         {
-            heartImages[i].SetActive(i <= lives);
+            heartImages[i].SetActive(i < lives);
         }
     }
 }
