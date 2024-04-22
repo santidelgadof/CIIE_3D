@@ -1454,7 +1454,7 @@ MonoBehaviour:
   tapa: {fileID: 338941130}
   keyToDrop: 101
   trashType: 0
-  trashBag: {fileID: 100000, guid: efbc7aaed080d31418251812fc4cfad8, type: 3}
+  trashBag: {fileID: 919132149155446097, guid: 67dc86b6b71a7c7428ab8cdb27741368, type: 3}
   capacity: 2
   penalization: 2
 --- !u!65 &338941134
@@ -4409,7 +4409,7 @@ MonoBehaviour:
   tapa: {fileID: 1032064076}
   keyToDrop: 101
   trashType: 1
-  trashBag: {fileID: 100000, guid: efbc7aaed080d31418251812fc4cfad8, type: 3}
+  trashBag: {fileID: 919132149155446097, guid: 67dc86b6b71a7c7428ab8cdb27741368, type: 3}
   capacity: 1
   penalization: 2
 --- !u!65 &1032064080

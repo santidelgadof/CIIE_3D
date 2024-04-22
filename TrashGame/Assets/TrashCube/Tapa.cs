@@ -106,7 +106,7 @@ public class Tapa : MonoBehaviour
                         spawnPosition = transform.position + new Vector3(0f, 0f, 0f);
                     }
                     
-                    Instantiate(trashBag, spawnPosition, Quaternion.identity);
+                    TransformIntoBag(spawnPosition);
                     amountAlreadyIn = 0;
                     UpdateUI();
                     }
@@ -120,6 +120,39 @@ public class Tapa : MonoBehaviour
                 
             }
         }
+    }
+
+    public void TransformIntoBag(Vector3 spawnPosition)
+    {
+        GameObject bolsa = Instantiate(trashBag, spawnPosition, Quaternion.Euler(-75f, 0f, 0f));
+
+        // Obtener el Rigidbody y el Collider de la bolsa
+        Rigidbody bolsaRigidbody = bolsa.GetComponent<Rigidbody>();
+        Collider bolsaCollider = bolsa.GetComponent<Collider>();
+
+        // Si no hay un Rigidbody, añadir uno
+        if (bolsaRigidbody == null)
+        {
+            bolsaRigidbody = bolsa.AddComponent<Rigidbody>();
+        }
+
+        // Si no hay un Collider, añadir uno
+        if (bolsaCollider == null)
+        {
+            bolsaCollider = bolsa.AddComponent<BoxCollider>();
+        }
+
+        // Asignar la etiqueta "bag" al objeto de la bolsa
+        bolsa.tag = "bag";
+        bolsa.layer = LayerMask.NameToLayer("grab");
+
+        // Habilitar el Rigidbody y el Collider
+        bolsaRigidbody.isKinematic = false;
+        bolsaCollider.enabled = true;
+
+
+        // Ajustar la escala de la bolsa
+        bolsa.transform.localScale = new Vector3(450f, 450f, 450f);
     }
 
     private void OnTriggerEnter(Collider other)

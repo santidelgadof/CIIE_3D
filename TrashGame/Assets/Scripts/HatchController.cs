@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
@@ -28,7 +29,7 @@ public class NewBehaviourScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("TrashBag"))
+        if (other.CompareTag("TrashBag") || other.CompareTag("bag"))
         {
             
             isOpen = true;
