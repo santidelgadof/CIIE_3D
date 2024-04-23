@@ -10,8 +10,18 @@ public class MouseAI : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomDestination();
+        gameObject.SetActive(false); // Desactivar el ratón al principio
+
+        // Llamar a la función para activar el ratón después de un tiempo aleatorio entre 0 y 60 segundos
+        Invoke("ActivateMouse", Random.Range(0f, 20f));
     }
+
+    void ActivateMouse()
+    {
+        gameObject.SetActive(true); // Activar el ratón después de un tiempo aleatorio
+        SetRandomDestination(); // Establecer un destino aleatorio una vez que el ratón esté activo
+    }
+
 
     void Update()
     {
