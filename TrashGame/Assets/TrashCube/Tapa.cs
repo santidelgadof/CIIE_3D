@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Tapa : MonoBehaviour
@@ -82,20 +83,73 @@ public class Tapa : MonoBehaviour
             {
                 if (item != null) { /// Drop the item inside the container.                    
                     TrashItem tI = item.GetComponent<TrashItem>();
-                    if (tI.trashType == trashType) { /// Correct classification                        
-                        if (amountAlreadyIn + 1 <= capacity) {
-                            /// Container has enough space.
-                            amountAlreadyIn += 1;
-                            Destroy(item.gameObject);                
-                            UpdateUI();
-                        } 
-                    } else { /// Wrong classification
-                        amountAlreadyIn -= penalization;
-                        if (amountAlreadyIn < 0)
-                            amountAlreadyIn = 0;
-                        Destroy(item.gameObject);  
-                        UpdateUI();
+                    if (SceneManager.GetActiveScene().buildIndex == 1)
+                    {
+                        if (trashType == TrashType.Inorganic)
+                        {
+                            if (tI.trashType == TrashType.Inorganic || tI.trashType == TrashType.Paper || tI.trashType == TrashType.Glass)
+                            { /// Correct classification                        
+                                if (amountAlreadyIn + 1 <= capacity)
+                                {
+                                    /// Container has enough space.
+                                    amountAlreadyIn += 1;
+                                    Destroy(item.gameObject);
+                                    UpdateUI();
+                                }
+                            }
+                            else
+                            { /// Wrong classification
+                                amountAlreadyIn -= penalization;
+                                if (amountAlreadyIn < 0)
+                                    amountAlreadyIn = 0;
+                                Destroy(item.gameObject);
+                                UpdateUI();
+                            }
+                        }
+                        else if (trashType == TrashType.Organic)
+                        {
+                            if (tI.trashType == TrashType.Organic)
+                            { /// Correct classification                        
+                                if (amountAlreadyIn + 1 <= capacity)
+                                {
+                                    /// Container has enough space.
+                                    amountAlreadyIn += 1;
+                                    Destroy(item.gameObject);
+                                    UpdateUI();
+                                }
+                            }
+                            else
+                            { /// Wrong classification
+                                amountAlreadyIn -= penalization;
+                                if (amountAlreadyIn < 0)
+                                    amountAlreadyIn = 0;
+                                Destroy(item.gameObject);
+                                UpdateUI();
+                            }
+                        }
                     }
+                    else if (SceneManager.GetActiveScene().buildIndex == 2)
+                    {
+                        if (tI.trashType == trashType)
+                        { /// Correct classification                        
+                            if (amountAlreadyIn + 1 <= capacity)
+                            {
+                                /// Container has enough space.
+                                amountAlreadyIn += 1;
+                                Destroy(item.gameObject);
+                                UpdateUI();
+                            }
+                        }
+                        else
+                        { /// Wrong classification
+                            amountAlreadyIn -= penalization;
+                            if (amountAlreadyIn < 0)
+                                amountAlreadyIn = 0;
+                            Destroy(item.gameObject);
+                            UpdateUI();
+                        }
+                    }
+
                 } else { /// The player is not carrying a TrashItem.
                     if (amountAlreadyIn == capacity) { /// The container is filled.
                     Vector3 spawnPosition = transform.position;
