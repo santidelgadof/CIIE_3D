@@ -29,7 +29,7 @@ public class CharacterScript : MonoBehaviour
     private Vector3 grabOffset;
     private Collider grabbedObject;
 
-    [SerializeField] private int totalPuntuation;
+    [SerializeField] private FloatOs scoreSo;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     //First person camera rotation
@@ -48,7 +48,7 @@ public class CharacterScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        totalPuntuation = 0;
+        
         mouseAI = FindObjectOfType<MouseAI>();
 
         grabBox = GameObject.Find("GrabCollider");
@@ -289,11 +289,11 @@ public class CharacterScript : MonoBehaviour
     }
 
     public void Point() {
-        this.totalPuntuation += 100;
+        scoreSo.Value += 100;
     }
 
-    public int GetTotalPuntuation() {
-        return totalPuntuation;
+    public float GetTotalPuntuation() {
+        return scoreSo.Value;
     }
 
     public GameObject GetGrabbedObject() {
@@ -307,7 +307,7 @@ public class CharacterScript : MonoBehaviour
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = "Score: " + totalPuntuation.ToString();
+            scoreText.text = "Score: " + scoreSo.Value.ToString();
         else
             Debug.LogError("Score TextMeshProUGUI reference not set in the inspector.");
     }

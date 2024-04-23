@@ -6,10 +6,12 @@ public class PauseMenu : MonoBehaviour
     public static bool isGamePaused = false;
     [SerializeField] private GameObject pauseMenuUi;
     private GameObject FillIndicatorsUi;
+    private GameObject ResetScore;
 
     private void Awake()
     {
         FillIndicatorsUi = GameObject.Find("FillinIndicators");
+        ResetScore = GameObject.Find("ResetScore");
     }
 
     private void Update()
@@ -50,6 +52,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         isGamePaused = false;
+        ResetScore.SetActive(true);
         SceneManager.LoadScene(0);
     }
 
