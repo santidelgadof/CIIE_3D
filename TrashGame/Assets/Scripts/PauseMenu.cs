@@ -5,13 +5,14 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
     [SerializeField] private GameObject pauseMenuUi;
+    [SerializeField] private GameObject ResetScore;
     private GameObject FillIndicatorsUi;
-    private GameObject ResetScore;
+    
 
     private void Awake()
     {
         FillIndicatorsUi = GameObject.Find("FillinIndicators");
-        ResetScore = GameObject.Find("ResetScore");
+        //ResetScore = GameObject.Find("ResetScore");
     }
 
     private void Update()
@@ -58,6 +59,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        ResetScore.SetActive(true);
         Application.Quit();
     }
 }
