@@ -5,6 +5,12 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
     [SerializeField] private GameObject pauseMenuUi;
+    private GameObject FillIndicatorsUi;
+
+    private void Awake()
+    {
+        FillIndicatorsUi = GameObject.Find("FillinIndicators");
+    }
 
     private void Update()
     {
@@ -27,6 +33,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUi.SetActive(false);
+        FillIndicatorsUi.SetActive(true);
         Time.timeScale = 1f;
         isGamePaused = false;
     }
@@ -34,12 +41,15 @@ public class PauseMenu : MonoBehaviour
     private void Pause()
     {
         pauseMenuUi.SetActive(true);
+        FillIndicatorsUi.SetActive(false);
         Time.timeScale = 0f;
         isGamePaused = true;
     }
 
     public void GoToMenu()
     {
+        Time.timeScale = 1f;
+        isGamePaused = false;
         SceneManager.LoadScene(0);
     }
 
