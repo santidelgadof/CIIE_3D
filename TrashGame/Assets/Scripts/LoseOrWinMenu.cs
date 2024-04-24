@@ -1,28 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoseOrWinMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static LoseOrWinMenu Instance;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private int finalScene = 1;
+    [SerializeField] private GameObject finalWindow;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
     public void Win() {
         /// TODO: Open Next scene
+        if(SceneManager.GetActiveScene().buildIndex == finalScene)
+        {
+            gameObject.SetActive(false);
+            finalWindow.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void Lose() {
-        SceneManager.LoadScene("SampleScene");
+        GameManager.Instance.UpdateGameState(GameState.StartMenu);
+        //SceneManager.LoadScene("SampleScene");
     }
 
     public void No(){}

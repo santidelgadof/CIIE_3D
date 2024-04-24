@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SimpleTimer : MonoBehaviour
@@ -10,6 +12,8 @@ public class SimpleTimer : MonoBehaviour
     [SerializeField] public TextMeshProUGUI text;
     public GameObject winCanvas;
     private float targetTime;
+    private bool timeEnd = false;
+   
 
     void Start()
     {
@@ -22,24 +26,46 @@ public class SimpleTimer : MonoBehaviour
 
     void Update()
     {
-        targetTime -= Time.deltaTime;
-
-        if (targetTime <= 0.0f)
+        if (!timeEnd)
         {
-            text.text = "0:00";
-            timerEnded();
-        } else {
+            if (targetTime <= 0.0f)
+            {
+                timeEnd = true;
 
-        int wholeMinutes = Mathf.FloorToInt(targetTime / 60);
-        int seconds = Mathf.FloorToInt(targetTime % 60);
-        string formattedTime = string.Format("{0:00}:{1:00}", wholeMinutes, seconds);
-        text.text = formattedTime;
+                text.text = "0:00";
+
+                timerEnded();
+
+                //gameObject.SetActive(false); //Volver a activar más tarde
+            }
+            else
+            {
+                targetTime -= Time.deltaTime;
+                int wholeMinutes = Mathf.FloorToInt(targetTime / 60);
+                int seconds = Mathf.FloorToInt(targetTime % 60);
+                string formattedTime = string.Format("{0:00}:{1:00}", wholeMinutes, seconds);
+                text.text = formattedTime;
+            }
+        }
+        else
+        {
+            if(targetTime <= 0.0f)
+            {
+                Time.timeScale = 0;
+            }
         }
     }
 
     void timerEnded()
     {
+       
         winCanvas.SetActive(true);
         Time.timeScale = 0;
+        
+    }
+
+    public void activateTimer()
+    {
+        gameObject.SetActive(true);
     }
 }

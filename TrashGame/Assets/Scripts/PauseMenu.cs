@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu Instance;
     public static bool isGamePaused = false;
     [SerializeField] private GameObject pauseMenuUi;
     [SerializeField] private GameObject ResetScore;
@@ -11,8 +12,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         FillIndicatorsUi = GameObject.Find("FillinIndicators");
-        //ResetScore = GameObject.Find("ResetScore");
     }
 
     private void Update()
@@ -54,7 +55,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isGamePaused = false;
         ResetScore.SetActive(true);
-        SceneManager.LoadScene(0);
+        GameManager.Instance.UpdateGameState(GameState.StartMenu);
+        //SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

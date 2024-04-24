@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class LeaderBoardData : ScriptableObject
 {
-    [SerializeField]
     private List<(string, float)> mValue = new List<(string, float)>();
 
     public void AddNewScore(string name, float score)
     {
+        Debug.Log("añadiendo" + name + " " + score);
         // Ordena en orden descendiente (5, 4, 3...) las puntuaciones
         if (mValue == null)
         {
