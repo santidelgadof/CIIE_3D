@@ -6,12 +6,18 @@ using UnityEngine.UI;
 
 public class FinalMenu : MonoBehaviour
 {
+    public FinalMenu Instance;
     [SerializeField] private FloatOs scoreSo;
     [SerializeField] private LeaderBoardData leaderList;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     private float score;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         Time.timeScale = 0f;
@@ -35,8 +41,9 @@ public class FinalMenu : MonoBehaviour
         }
 
         gameObject.SetActive(false);
-        // Game manager que te lleve al menu de inicio
         Time.timeScale = 1f;
+        GameManager.Instance.UpdateGameState(GameState.StartMenu);
+        
     }
 
   

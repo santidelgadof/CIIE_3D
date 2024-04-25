@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bf79ede71c64b95bb6ab2e8ed40650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalScene: 1
+  finalScene: 2
   finalWindow: {fileID: 1851080042}
 --- !u!114 &90326849
 MonoBehaviour:
@@ -9247,6 +9247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6892d8e9c1c094db7550578adb37fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Instance: {fileID: 0}
   scoreSo: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
   leaderList: {fileID: 11400000, guid: be90e5f8dcc879840827343aa87ccdce, type: 2}
   scoreText: {fileID: 2042313102}

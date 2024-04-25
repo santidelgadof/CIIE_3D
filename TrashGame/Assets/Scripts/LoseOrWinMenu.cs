@@ -10,7 +10,7 @@ public class LoseOrWinMenu : MonoBehaviour
 {
     public static LoseOrWinMenu Instance;
 
-    [SerializeField] private int finalScene = 1;
+    [SerializeField] private int finalScene = 2;
     [SerializeField] private GameObject finalWindow;
 
     private void Awake()
