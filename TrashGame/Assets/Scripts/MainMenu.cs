@@ -27,16 +27,16 @@ public class MainMenu : MonoBehaviour
 
     public void Instructions()
     {
-        instructionsScreen.SetActive(true);
+        instructionsScreen.SetActive(!instructionsScreen.activeSelf);
     }
 
     public void Options()
     {
-        optionsScreen.SetActive(true);
+        optionsScreen.SetActive(!optionsScreen.activeSelf);
     }
 
     public void LeaderBoard()
     {
-        leaderBoardScreen.SetActive(true);
+        leaderBoardScreen.SetActive(!leaderBoardScreen.activeSelf);
     }
 }

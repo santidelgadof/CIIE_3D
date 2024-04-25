@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -972,7 +972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &679296702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2251,6 +2251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc16198d0d8460e43977c9dd5b655d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instructionsScreen: {fileID: 679296701}
+  optionsScreen: {fileID: 1994008229}
+  leaderBoardScreen: {fileID: 1406355019}
 --- !u!1 &1406355019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,7 +2271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1406355020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2954,7 +2957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1994008230
 RectTransform:
   m_ObjectHideFlags: 0
