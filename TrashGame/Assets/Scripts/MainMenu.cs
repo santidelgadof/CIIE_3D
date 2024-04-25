@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public static MainMenu Instance;
+    [SerializeField] GameObject instructionsScreen;
+    [SerializeField] GameObject optionsScreen;
+    [SerializeField] GameObject leaderBoardScreen;
     private void Awake()
     {
         Instance = this;
@@ -24,16 +27,16 @@ public class MainMenu : MonoBehaviour
 
     public void Instructions()
     {
-
+        instructionsScreen.SetActive(true);
     }
 
     public void Options()
     {
-
+        optionsScreen.SetActive(true);
     }
 
     public void LeaderBoard()
     {
-
+        leaderBoardScreen.SetActive(true);
     }
 }
