@@ -33,7 +33,7 @@ public class FinalMenu : MonoBehaviour
 
         if (name != null)
         {
-            leaderList.AddNewScore(name, score);
+           leaderList.AddNewScore(name, score);
         }
         else
         {

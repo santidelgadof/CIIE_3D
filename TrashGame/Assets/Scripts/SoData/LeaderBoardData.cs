@@ -5,8 +5,16 @@ using UnityEngine;
 [CreateAssetMenu]
 public class LeaderBoardData : ScriptableObject
 {
+    [SerializeField]
     private List<(string, float)> mValue = new List<(string, float)>();
 
+    public List<(string, float)> Lblist
+    {
+        get { return mValue; }
+        set { mValue = value; }
+    }
+
+    [SerializeField]
     public void AddNewScore(string name, float score)
     {
         Debug.Log("añadiendo" + name + " " + score);
@@ -24,9 +32,12 @@ public class LeaderBoardData : ScriptableObject
                 //Toma los primeros 5 elementos de la lista y los guarda
                 mValue = mValue.Take(5).ToList();
             }
+
         }
+        Lblist = mValue;
     }
 
+    [SerializeField]
     public List<(string, float)> getListofScores()
     {
         return mValue;
