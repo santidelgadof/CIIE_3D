@@ -17,7 +17,7 @@ public class SimpleTimer : MonoBehaviour
 
     void Start()
     {
-        targetTime = minutes * 60f;
+        targetTime = minutes * 100f;
         int wholeMinutes = Mathf.FloorToInt(targetTime / 60);
         int seconds = Mathf.FloorToInt(targetTime % 60);
         string formattedTime = string.Format("{0:00}:{1:00}", wholeMinutes, seconds);
@@ -36,7 +36,7 @@ public class SimpleTimer : MonoBehaviour
 
                 timerEnded();
 
-                //gameObject.SetActive(false); //Volver a activar más tarde
+                //gameObject.SetActive(false); //Volver a activar mï¿½s tarde
             }
             else
             {
