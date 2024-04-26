@@ -3973,6 +3973,7 @@ MonoBehaviour:
   instructionsScreen: {fileID: 542942614}
   optionsScreen: {fileID: 1885530435}
   leaderBoardScreen: {fileID: 1406355019}
+  LB: {fileID: 1125420174}
 --- !u!1 &1293866790
 GameObject:
   m_ObjectHideFlags: 0
