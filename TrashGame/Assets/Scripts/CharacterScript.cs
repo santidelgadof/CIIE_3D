@@ -32,6 +32,12 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] private FloatOs scoreSo;
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    [SerializeField] private float mouseActiveTime = 0f;
+    private bool isMouseActive = false;
+
+    [SerializeField] private TextMeshProUGUI timerText;
+
+
     //First person camera rotation
     //[SerializeField] private float sensX = 400;
     //[SerializeField] private float sensY = 400;
@@ -58,6 +64,7 @@ public class CharacterScript : MonoBehaviour
             scoreSo.Value = 0;
         }
 
+        timerText = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
         //playerCamera = GameObject.Find("PlayerCamera");
         //sceneCamera = GameObject.Find("Main Camera");
         //sceneCamera.SetActive(true);
@@ -69,6 +76,39 @@ public class CharacterScript : MonoBehaviour
     {
         if (!PauseMenu.isGamePaused)
         {
+            if (mouseAI != null)
+            {
+                // Incrementar el tiempo si el ratón está activo
+                if (mouseAI.gameObject.activeSelf)
+                {
+                    mouseActiveTime += Time.deltaTime;
+
+                    // Actualizar el temporizador en la interfaz de usuario
+                    float timeRemaining = Mathf.Max(0, 15f - mouseActiveTime);
+                    timerText.text = "" + timeRemaining.ToString("F0") + "s";
+
+
+                    // Restar puntos si el ratón está activo por más de 15 segundos
+                    if (mouseActiveTime > 15f && !isMouseActive)
+                    {
+                        scoreSo.Value -= 100;
+                        isMouseActive = true; // Marcar que se restaron puntos para evitar restarlos continuamente
+                    }
+                }
+                else
+                {
+                    // Reiniciar el tiempo si el ratón está desactivado
+                    mouseActiveTime = 0f;
+                    isMouseActive = false;
+                }
+
+                // Restablecer el tiempo si el ratón está desactivado
+                if (!mouseAI.gameObject.activeSelf)
+                {
+                    mouseActiveTime = 0f;
+                    isMouseActive = false;
+                }
+            }    
             movement();
 
             if (Input.GetKeyDown(KeyCode.E))
