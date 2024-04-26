@@ -63,12 +63,10 @@ public class CharacterScript : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1) {
             scoreSo.Value = 0;
         }
-
-        timerText = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
-        //playerCamera = GameObject.Find("PlayerCamera");
-        //sceneCamera = GameObject.Find("Main Camera");
-        //sceneCamera.SetActive(true);
-        //playerCamera.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            timerText = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
+        }
     }
 
     
@@ -144,30 +142,6 @@ public class CharacterScript : MonoBehaviour
                 moveGrabbedObject();
             }
             UpdateScoreUI();
-
-            /*
-            //Switch cameras
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                //CameraSwitch.CameraSwitched();
-                sceneCamera.SetActive(!sceneCamera.activeSelf);
-                playerCamera.SetActive(!playerCamera.activeSelf);
-            }
-            if (grabbedObject != null)
-            {
-                moveGrabbedObject();
-            }
-
-            if (playerCamera.activeSelf)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-            }*/
 
         }
         /*else
