@@ -6,7 +6,7 @@ using UnityEngine;
 public class LeaderBoardData : ScriptableObject
 {
     [SerializeField]
-    private List<(string, float)> mValue = new List<(string, float)>();
+    private List<(string, float)> mValue = new();
 
     public List<(string, float)> Lblist
     {
@@ -17,7 +17,6 @@ public class LeaderBoardData : ScriptableObject
     [SerializeField]
     public void AddNewScore(string name, float score)
     {
-        Debug.Log("añadiendo" + name + " " + score);
         // Ordena en orden descendiente (5, 4, 3...) las puntuaciones
         if (mValue == null)
         {
@@ -35,12 +34,6 @@ public class LeaderBoardData : ScriptableObject
 
         }
         Lblist = mValue;
-    }
-
-    [SerializeField]
-    public List<(string, float)> getListofScores()
-    {
-        return mValue;
     }
 
 }
