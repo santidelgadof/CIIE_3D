@@ -10,7 +10,7 @@ public class LoseOrWinMenu : MonoBehaviour
 {
     public static LoseOrWinMenu Instance;
 
-    [SerializeField] private int finalScene = 2;
+    private int finalScene = 3;
     [SerializeField] private GameObject finalWindow;
 
     private void Awake()
@@ -20,6 +20,7 @@ public class LoseOrWinMenu : MonoBehaviour
 
     public void Win() {
         /// TODO: Open Next scene
+        
         if(SceneManager.GetActiveScene().buildIndex == finalScene)
         {
             gameObject.SetActive(false);
@@ -27,13 +28,12 @@ public class LoseOrWinMenu : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            GameManager.Instance.NextLevel();
         }
     }
 
     public void Lose() {
-        GameManager.Instance.UpdateGameState(GameState.StartMenu);
+        GameManager.Instance.BackToMenu();
         //SceneManager.LoadScene("SampleScene");
     }
 

@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        GameManager.Instance.UpdateGameState(GameState.Level1);
+        GameManager.Instance.StartGame();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

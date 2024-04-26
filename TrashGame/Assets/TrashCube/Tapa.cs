@@ -128,7 +128,7 @@ public class Tapa : MonoBehaviour
                             }
                         }
                     }
-                    else if (SceneManager.GetActiveScene().buildIndex == 2)
+                    else 
                     {
                         if (tI.trashType == trashType)
                         { /// Correct classification                        
