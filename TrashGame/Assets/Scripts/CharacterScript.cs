@@ -54,6 +54,9 @@ public class CharacterScript : MonoBehaviour
         grabBox = GameObject.Find("GrabCollider");
         grabPos = transform.Find("GrabPosition");
         Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().buildIndex == 1) {
+            scoreSo.Value = 0;
+        }
 
         //playerCamera = GameObject.Find("PlayerCamera");
         //sceneCamera = GameObject.Find("Main Camera");
@@ -307,7 +310,7 @@ public class CharacterScript : MonoBehaviour
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = "Score: " + scoreSo.Value.ToString();
+            scoreText.text = "Score\n" + scoreSo.Value.ToString();
         else
             Debug.LogError("Score TextMeshProUGUI reference not set in the inspector.");
     }

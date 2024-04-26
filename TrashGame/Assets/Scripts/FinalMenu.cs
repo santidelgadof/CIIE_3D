@@ -42,7 +42,7 @@ public class FinalMenu : MonoBehaviour
 
         gameObject.SetActive(false);
         Time.timeScale = 1f;
-        GameManager.Instance.UpdateGameState(GameState.StartMenu);
+        GameManager.Instance.BackToMenu();
         
     }
 

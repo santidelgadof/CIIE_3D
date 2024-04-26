@@ -18,24 +18,29 @@ public class GameManager : MonoBehaviour
     {
         //UpdateGameState(GameState.StartMenu);
     }
+    public void StartGame() {
+        SceneManager.LoadScene(1);
+    }
 
-    public void UpdateGameState(GameState newState)
-    {
-        state = newState;
+    public void BackToMenu() {
+        SceneManager.LoadScene(0);
+    }
 
-        switch (newState)
+    public void NextLevel() {
+        switch (state) 
         {
             case GameState.StartMenu:
-                SceneManager.LoadScene(0);
-                break;
-            case GameState.Level1:
                 SceneManager.LoadScene(1);
                 break;
+            case GameState.Level1:
+                SceneManager.LoadScene(2);
+                break;
             case GameState.Level2:
-                //SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
                 break;
             case GameState.Level3:
-                //SceneManager.LoadScene(3);
+                //state = GameState.Level4;
+                //sSceneManager.LoadScene(4);
                 break;
             case GameState.Lose:
                 //SceneManager.LoadScene(4); una escena para pantalla de perder y ganar?? 
@@ -45,8 +50,6 @@ public class GameManager : MonoBehaviour
                 break;
             default: break;
         }
-
-        onGameStateChanged?.Invoke(newState);
     }
 }
 public enum GameState
