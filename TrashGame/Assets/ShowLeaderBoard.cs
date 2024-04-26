@@ -12,7 +12,7 @@ public class ShowLeaderBoard : MonoBehaviour
     private void Start()
     {
         list = leaderList.Lblist;
-        LbText.text = "name    ----------------------------------->    score\n";
+        //LbText.text = "name    ----------------------------------->    score\n";
         PrintLeaderBoard();
     }
 
@@ -26,7 +26,7 @@ public class ShowLeaderBoard : MonoBehaviour
                 string name = pair.Item1;
                 string score = pair.Item2.ToString();
 
-                LbText.text += name + "    ----------------------------------->    " + score + "\n";
+                LbText.text += "\n" + name + "    ----------------------------------->    " + score;
             }
         }
     }

@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+//THIS CLASS IS NOT NECESSARY NOW
+
 [CreateAssetMenu]
 public class LeaderBoardData : ScriptableObject
 {
@@ -18,6 +21,7 @@ public class LeaderBoardData : ScriptableObject
     public void AddNewScore(string name, float score)
     {
         // Ordena en orden descendiente (5, 4, 3...) las puntuaciones
+        mValue = Lblist;
         if (mValue == null)
         {
             mValue.Add((name, score));
