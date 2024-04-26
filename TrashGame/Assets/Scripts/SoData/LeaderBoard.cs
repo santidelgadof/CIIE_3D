@@ -21,7 +21,7 @@ public class LeaderBoard : MonoBehaviour
         LeaderboardCreator.GetLeaderboard(publicLeaderBoardKey, ((msg) =>
         {
             int loopLenght = (msg.Length < names.Count) ? msg.Length : names.Count;
-            Debug.Log(names.Count);
+
             for(int i = 0; i<loopLenght; ++i)
             {
                 names[i].text = msg[i].Username;

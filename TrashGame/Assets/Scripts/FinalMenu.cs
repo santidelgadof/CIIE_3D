@@ -33,8 +33,10 @@ public class FinalMenu : MonoBehaviour
 
     public void Submit()
     {
-        
-        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, name, score, ((msg) =>
+        string username;
+        if (name != "FinalWinMenu") username = name;
+        else username = "Player";
+        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, score, ((msg) =>
         {
             LeaderboardCreator.ResetPlayer();
         }));

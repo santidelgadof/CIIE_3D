@@ -29,14 +29,14 @@ public class PortalOut : MonoBehaviour
             }
         } else {
             if (other.CompareTag("TrashItem"))
-        {
-            // Destroy the TrashItem game object
-            Destroy(other.gameObject);
-            if (characterScript != null)
             {
-                characterScript.LoseLife();
+                // Destroy the TrashItem game object
+                Destroy(other.gameObject);
+                if (characterScript != null)
+                {
+                    characterScript.LoseLife();
+                }
             }
-        }
         }
     }
 }

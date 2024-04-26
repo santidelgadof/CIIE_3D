@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -929,7 +929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ff08c5bdd9b4d4899e8ee049145f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 5
   heartImages:
   - {fileID: 321052367}
   - {fileID: 1649231502}
@@ -943,6 +942,7 @@ MonoBehaviour:
     m_Bits: 64
   loseCanvas: {fileID: 1231751557}
   scoreSo: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
   scoreText: {fileID: 1393833159}
 --- !u!54 &115402524
 Rigidbody:
@@ -2030,6 +2030,53 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 875478893}
   m_SourcePrefab: {fileID: 100100000, guid: 38d1f175409165443ba83b93603c8f6e, type: 3}
+--- !u!1 &301741286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301741288}
+  - component: {fileID: 301741287}
+  m_Layer: 0
+  m_Name: ResetScore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &301741287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301741286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5310722a34d53a14aaea42b17e6c01b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreSO: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
+  player: {fileID: 115402522}
+--- !u!4 &301741288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301741286}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4454325, y: 6.9, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312222434
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,7 +5526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUi: {fileID: 1703995460}
-  ResetScore: {fileID: 0}
+  ResetScore: {fileID: 301741286}
 --- !u!1 &850184469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5720,6 +5767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee50395dc2e8dc5468707d09aac4f100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
+  score: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
   state: 3
 --- !u!4 &859955427
 Transform:
@@ -11813,3 +11862,4 @@ SceneRoots:
   - {fileID: 90326853}
   - {fileID: 859955427}
   - {fileID: 85931171}
+  - {fileID: 301741288}

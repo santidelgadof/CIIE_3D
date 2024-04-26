@@ -15,7 +15,7 @@ public class CharacterScript : MonoBehaviour
     private Rigidbody rb;
     private Vector3 originalGrabbedObjectPosition;
 
-    [SerializeField] private int lives = 5;  
+     
     [SerializeField] private List<GameObject> heartImages;
 
     [SerializeField] private float speed = 10;
@@ -30,6 +30,7 @@ public class CharacterScript : MonoBehaviour
     private Collider grabbedObject;
 
     [SerializeField] private FloatOs scoreSo;
+    [SerializeField] private LivesCounter lives;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     //First person camera rotation
@@ -63,8 +64,12 @@ public class CharacterScript : MonoBehaviour
         //sceneCamera.SetActive(true);
         //playerCamera.SetActive(false);
     }
+    private void Start()
+    {
+        UpdateHeartsUI();
+    }
 
-    
+
     void Update()
     {
         if (!PauseMenu.isGamePaused)
@@ -317,14 +322,15 @@ public class CharacterScript : MonoBehaviour
 
     public void LoseLife()
     {
-        if (lives > 1)
+        Debug.Log(lives.Lives);
+        if (lives.Lives > 1)
         {
-            lives--;
+            lives.Lives--;
             UpdateHeartsUI();
         }
         else
         {
-            lives--;
+            lives.Lives--;
             UpdateHeartsUI();
             loseCanvas.SetActive(true);
             Time.timeScale = 0;
@@ -333,11 +339,11 @@ public class CharacterScript : MonoBehaviour
         
     }
 
-    private void UpdateHeartsUI()
+    public void UpdateHeartsUI()
     {
         for (int i = 0; i < heartImages.Count; i++)
         {
-            heartImages[i].SetActive(i < lives);
+            heartImages[i].SetActive(i < lives.Lives);
         }
     }
 }

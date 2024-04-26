@@ -2901,6 +2901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee50395dc2e8dc5468707d09aac4f100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
+  score: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
   state: 0
 --- !u!4 &943878544
 Transform:

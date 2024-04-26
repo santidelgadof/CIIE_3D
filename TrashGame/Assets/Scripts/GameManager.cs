@@ -7,15 +7,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    [SerializeField] LivesCounter lives;
+    [SerializeField] FloatOs score;
     public GameState state;
     public static Action<GameState> onGameStateChanged;
     private void Awake()
     {
         Instance = this;
+        
     }
 
     private void Start()
     {
+        
         //UpdateGameState(GameState.StartMenu);
     }
     public void StartGame() {
@@ -26,10 +30,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+
     public void NextLevel() {
         switch (state) 
         {
             case GameState.StartMenu:
+                lives.Lives = 5;
                 SceneManager.LoadScene(1);
                 break;
             case GameState.Level1:
@@ -39,8 +45,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(3);
                 break;
             case GameState.Level3:
-                //state = GameState.Level4;
-                //sSceneManager.LoadScene(4);
+                //SceneManager.LoadScene(4);
                 break;
             case GameState.Lose:
                 //SceneManager.LoadScene(4); una escena para pantalla de perder y ganar?? 
