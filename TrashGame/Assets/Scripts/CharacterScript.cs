@@ -32,21 +32,13 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] private FloatOs scoreSo;
     [SerializeField] private LivesCounter lives;
     [SerializeField] private TextMeshProUGUI scoreText;
+   
+    [SerializeField]private GameObject MouseSOS;
 
     [SerializeField] private float mouseActiveTime = 0f;
     private bool isMouseActive = false;
 
     [SerializeField] private TextMeshProUGUI timerText;
-
-
-    //First person camera rotation
-    //[SerializeField] private float sensX = 400;
-    //[SerializeField] private float sensY = 400;
-    //float xRotation;
-    //float yRotation;
-
-    //private GameObject playerCamera;
-    //private GameObject sceneCamera;
 
     private Animator animator;
     private MouseAI mouseAI;
@@ -65,11 +57,6 @@ public class CharacterScript : MonoBehaviour
             scoreSo.Value = 0;
         }
 
-        timerText = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
-        //playerCamera = GameObject.Find("PlayerCamera");
-        //sceneCamera = GameObject.Find("Main Camera");
-        //sceneCamera.SetActive(true);
-        //playerCamera.SetActive(false);
     }
     private void Start()
     {
@@ -82,7 +69,8 @@ public class CharacterScript : MonoBehaviour
         if (!PauseMenu.isGamePaused)
         {
             if (mouseAI != null)
-            {
+            {   
+                MouseSOS.SetActive(true); 
                 // Incrementar el tiempo si el ratón está activo
                 if (mouseAI.gameObject.activeSelf)
                 {
@@ -90,7 +78,13 @@ public class CharacterScript : MonoBehaviour
 
                     // Actualizar el temporizador en la interfaz de usuario
                     float timeRemaining = Mathf.Max(0, 15f - mouseActiveTime);
-                    timerText.text = "" + timeRemaining.ToString("F0") + "s";
+                    if (timeRemaining < 10)
+                    {
+                        timerText.text = "0" + timeRemaining.ToString("F0") ;
+                    } else
+                    {
+                        timerText.text = "" + timeRemaining.ToString("F0") ;
+                    }    
 
 
                     // Restar puntos si el ratón está activo por más de 15 segundos
@@ -105,6 +99,9 @@ public class CharacterScript : MonoBehaviour
                     // Reiniciar el tiempo si el ratón está desactivado
                     mouseActiveTime = 0f;
                     isMouseActive = false;
+                    MouseSOS.SetActive(false); 
+
+                    
                 }
 
                 // Restablecer el tiempo si el ratón está desactivado
@@ -112,6 +109,7 @@ public class CharacterScript : MonoBehaviour
                 {
                     mouseActiveTime = 0f;
                     isMouseActive = false;
+                    MouseSOS.SetActive(false); 
                 }
             }    
             movement();
