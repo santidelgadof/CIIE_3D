@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -600,7 +600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ff08c5bdd9b4d4899e8ee049145f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 5
   heartImages:
   - {fileID: 321052367}
   - {fileID: 1649231502}
@@ -614,6 +613,7 @@ MonoBehaviour:
     m_Bits: 64
   loseCanvas: {fileID: 1231751557}
   scoreSo: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
   scoreText: {fileID: 1393833159}
 --- !u!54 &115402524
 Rigidbody:
@@ -6278,6 +6278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreSO: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
+  player: {fileID: 115402522}
 --- !u!4 &1642559692
 Transform:
   m_ObjectHideFlags: 0
@@ -7008,6 +7010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee50395dc2e8dc5468707d09aac4f100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
+  score: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
   state: 1
 --- !u!4 &2019706758
 Transform:

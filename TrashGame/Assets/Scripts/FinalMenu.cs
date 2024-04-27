@@ -1,7 +1,9 @@
+using Dan.Main;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class FinalMenu : MonoBehaviour
@@ -11,7 +13,8 @@ public class FinalMenu : MonoBehaviour
     [SerializeField] private LeaderBoardData leaderList;
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    private float score;
+    private int score;
+    private string publicLeaderBoardKey = "b358e015d6cd5fb4fc6aab834193a7613aba9b48fd4c8987fb1428d05456c0c6";
 
     private void Awake()
     {
@@ -23,22 +26,29 @@ public class FinalMenu : MonoBehaviour
         Time.timeScale = 0f;
         if (scoreText != null)
         {
-            score = scoreSo.Value;
+            score = (int)scoreSo.Value;
             scoreText.text = score.ToString();
         }
     }
 
     public void Submit()
     {
+        string username;
+        if (name != "FinalWinMenu") username = name;
+        else username = "Player";
+        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, score, ((msg) =>
+        {
+            LeaderboardCreator.ResetPlayer();
+        }));
 
-        if (name != null)
+        /*if (name != null)
         {
            leaderList.AddNewScore(name, score);
         }
         else
         {
-            //handle error (msg or smth)
-        }
+            leaderList.AddNewScore(" ", score);
+        }*/
 
         gameObject.SetActive(false);
         Time.timeScale = 1f;

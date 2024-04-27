@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject instructionsScreen;
     [SerializeField] GameObject optionsScreen;
     [SerializeField] GameObject leaderBoardScreen;
+    [SerializeField] LeaderBoard LB;
     private void Awake()
     {
         Instance = this;
@@ -27,16 +28,25 @@ public class MainMenu : MonoBehaviour
 
     public void Instructions()
     {
+        optionsScreen.SetActive(false);
+        leaderBoardScreen.SetActive(false);
         instructionsScreen.SetActive(!instructionsScreen.activeSelf);
     }
 
     public void Options()
     {
+        instructionsScreen.SetActive(false);
+        leaderBoardScreen.SetActive(false);
         optionsScreen.SetActive(!optionsScreen.activeSelf);
     }
 
     public void LeaderBoard()
     {
+        instructionsScreen.SetActive(false);
+        optionsScreen.SetActive(false);
         leaderBoardScreen.SetActive(!leaderBoardScreen.activeSelf);
+        LB.GetLeaderBoard();
     }
+
+   
 }

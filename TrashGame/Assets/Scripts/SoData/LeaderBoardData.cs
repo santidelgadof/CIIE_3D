@@ -2,11 +2,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+//THIS CLASS IS NOT NECESSARY NOW
+
 [CreateAssetMenu]
 public class LeaderBoardData : ScriptableObject
 {
     [SerializeField]
-    private List<(string, float)> mValue = new List<(string, float)>();
+    private List<(string, float)> mValue = new();
 
     public List<(string, float)> Lblist
     {
@@ -17,8 +20,8 @@ public class LeaderBoardData : ScriptableObject
     [SerializeField]
     public void AddNewScore(string name, float score)
     {
-        Debug.Log("añadiendo" + name + " " + score);
         // Ordena en orden descendiente (5, 4, 3...) las puntuaciones
+        mValue = Lblist;
         if (mValue == null)
         {
             mValue.Add((name, score));
@@ -35,12 +38,6 @@ public class LeaderBoardData : ScriptableObject
 
         }
         Lblist = mValue;
-    }
-
-    [SerializeField]
-    public List<(string, float)> getListofScores()
-    {
-        return mValue;
     }
 
 }
