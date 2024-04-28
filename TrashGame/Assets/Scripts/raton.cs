@@ -64,6 +64,13 @@ public class MouseAI : MonoBehaviour
         }
     }
 
+    public void DestroyMouse()
+    {
+        isMouseStopped = true;
+        navMeshAgent.isStopped = true;
+        Destroy(gameObject);
+    }
+
 
     public void TransformIntoBag()
     {

@@ -92,6 +92,8 @@ public class CharacterScript : MonoBehaviour
                     {
                         scoreSo.Value -= 100;
                         isMouseActive = true; // Marcar que se restaron puntos para evitar restarlos continuamente
+                        mouseAI.DestroyMouse();
+                        MouseSOS.SetActive(false);
                     }
                 }
                 else
@@ -138,7 +140,7 @@ public class CharacterScript : MonoBehaviour
                 {
                     // "Matar" al ratón deteniendo su movimiento
                     mouseAI.SetMouseStopped(true);
-                    Debug.Log("¡Ratón muerto!");
+                    MouseSOS.SetActive(false);
                 }
             }
 
