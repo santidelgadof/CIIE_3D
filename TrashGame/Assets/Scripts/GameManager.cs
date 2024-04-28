@@ -48,12 +48,10 @@ public class GameManager : MonoBehaviour
             case GameState.Level3:
                 //SceneManager.LoadScene(4);
                 break;
-            case GameState.Lose:
+            case GameState.Endless:
                 //SceneManager.LoadScene(4); una escena para pantalla de perder y ganar?? 
                 break;
-            case GameState.Victory:
-                //SceneManager.LoadScene(5);
-                break;
+            
             default: break;
         }
     }
@@ -64,6 +62,5 @@ public enum GameState
     Level1,
     Level2,
     Level3,
-    Lose,
-    Victory
+    Endless
 }

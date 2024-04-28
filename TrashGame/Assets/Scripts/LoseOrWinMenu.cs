@@ -11,6 +11,7 @@ public class LoseOrWinMenu : MonoBehaviour
     public static LoseOrWinMenu Instance;
 
     private int finalScene = 3;
+    private int endlessScene = 4;
     [SerializeField] private GameObject finalWindow;
 
     private void Awake()
@@ -33,8 +34,14 @@ public class LoseOrWinMenu : MonoBehaviour
     }
 
     public void Lose() {
-        GameManager.Instance.BackToMenu();
-        //SceneManager.LoadScene("SampleScene");
+        if (SceneManager.GetActiveScene().buildIndex == endlessScene)
+        {
+            gameObject.SetActive(false);
+            finalWindow.SetActive(true);
+        }
+        else
+            GameManager.Instance.BackToMenu();
+        
     }
 
     public void No(){}

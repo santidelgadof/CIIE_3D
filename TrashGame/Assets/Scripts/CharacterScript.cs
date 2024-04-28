@@ -150,36 +150,9 @@ public class CharacterScript : MonoBehaviour
             }
             UpdateScoreUI();
 
-            /*
-            //Switch cameras
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                //CameraSwitch.CameraSwitched();
-                sceneCamera.SetActive(!sceneCamera.activeSelf);
-                playerCamera.SetActive(!playerCamera.activeSelf);
-            }
-            if (grabbedObject != null)
-            {
-                moveGrabbedObject();
-            }
-
-            if (playerCamera.activeSelf)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-            }*/
-
+           
         }
-        /*else
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }*/
+        
     }
 
     /// <summary>
@@ -200,10 +173,10 @@ public class CharacterScript : MonoBehaviour
     private void TryGrabObject()
     {
         Collider[] colliders = Physics.OverlapBox(grabBox.transform.position, grabBox.transform.lossyScale, grabBox.transform.rotation, grabbableObjectLayer);
-        //Debug.Log(colliders.Length);
+        
         if (colliders.Length > 0)
         {
-            //Debug.Log("objs encontrados");
+           
             float closestDist = 20;
 
             Collider closestObject = null; 
@@ -221,7 +194,7 @@ public class CharacterScript : MonoBehaviour
                 grabOffset = grabbedObject.transform.position - grabPos.position;
                 originalGrabbedObjectPosition = grabbedObject.transform.position;
 
-                //Debug.Log("Objeto agarrado: " + grabbedObject.name);
+               
             }
         }
     }
@@ -288,20 +261,7 @@ public class CharacterScript : MonoBehaviour
         // Verificar tecla "S"
         if (Input.GetKey(KeyCode.S)) { moveVertical = -1f; }
 
-        /*if (playerCamera.activeSelf)
-        {
-            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-            yRotation += mouseX;
-            xRotation -= mouseY;
-            xRotation = Math.Clamp(xRotation, -90f, 90f);
-
-            playerCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-            transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
-
-            movement = transform.forward * moveVertical + transform.right * moveHorizontal;
-            rb.AddForce(100 * speed * movement.normalized, ForceMode.Force);
-        }*/
+        
 
         if (Mathf.Abs(moveHorizontal) < inputThreshold && Mathf.Abs(moveVertical) < inputThreshold)
         {
@@ -338,6 +298,8 @@ public class CharacterScript : MonoBehaviour
 
     public void Point() {
         scoreSo.Value += 100;
+        if(scoreSo.Value%500 == 0)
+            Time.timeScale += 0.1f;
     }
 
     public float GetTotalPuntuation() {
@@ -355,7 +317,10 @@ public class CharacterScript : MonoBehaviour
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = "Score\n" + scoreSo.Value.ToString();
+            if(SceneManager.GetActiveScene().buildIndex == 4)
+                scoreText.text = scoreSo.Value.ToString();
+            else
+                scoreText.text = "Score\n" + scoreSo.Value.ToString();
         else
             Debug.LogError("Score TextMeshProUGUI reference not set in the inspector.");
     }
