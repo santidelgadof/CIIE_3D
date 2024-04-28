@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         //UpdateGameState(GameState.StartMenu);
     }
     public void StartGame() {
+        lives.Lives = 5;
         SceneManager.LoadScene(1);
     }
 
