@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731707, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -424,7 +424,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1205868052}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: ChangeVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2498,7 +2498,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1205868052}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: ChangeQuality
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4132,7 +4132,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1205868052}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: FullScreen
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5160,7 +5160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aafbb22cb2b94acf9eb74246515b987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: c0c93711d1ec24c568607a84bf9eae63, type: 2}
 --- !u!1 &1242812930
 GameObject:
   m_ObjectHideFlags: 0
@@ -7899,7 +7899,7 @@ AudioSource:
   m_GameObject: {fileID: 2090552751}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c0c93711d1ec24c568607a84bf9eae63, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8a37cc79292a748a1b2b7a31243cf5d0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
