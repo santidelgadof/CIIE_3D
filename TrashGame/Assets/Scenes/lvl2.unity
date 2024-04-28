@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -825,6 +825,7 @@ MonoBehaviour:
   scoreSo: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
   lives: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
   scoreText: {fileID: 1393833159}
+  MouseSOS: {fileID: 0}
   mouseActiveTime: 0
   timerText: {fileID: 0}
 --- !u!54 &115402524
@@ -1799,7 +1800,7 @@ MonoBehaviour:
   keyToDrop: 101
   trashType: 0
   trashBag: {fileID: 919132149155446097, guid: 67dc86b6b71a7c7428ab8cdb27741368, type: 3}
-  capacity: 2
+  capacity: 5
   penalization: 2
 --- !u!65 &338941134
 BoxCollider:
@@ -4138,7 +4139,7 @@ MonoBehaviour:
   keyToDrop: 101
   trashType: 2
   trashBag: {fileID: 100000, guid: efbc7aaed080d31418251812fc4cfad8, type: 3}
-  capacity: 10
+  capacity: 5
   penalization: 2
 --- !u!65 &877403695
 BoxCollider:
@@ -4868,7 +4869,7 @@ MonoBehaviour:
   keyToDrop: 101
   trashType: 1
   trashBag: {fileID: 919132149155446097, guid: 67dc86b6b71a7c7428ab8cdb27741368, type: 3}
-  capacity: 1
+  capacity: 5
   penalization: 2
 --- !u!65 &1032064080
 BoxCollider:
@@ -6355,7 +6356,7 @@ MonoBehaviour:
   keyToDrop: 101
   trashType: 3
   trashBag: {fileID: 100000, guid: efbc7aaed080d31418251812fc4cfad8, type: 3}
-  capacity: 10
+  capacity: 5
   penalization: 2
 --- !u!1001 &1432554015
 PrefabInstance:

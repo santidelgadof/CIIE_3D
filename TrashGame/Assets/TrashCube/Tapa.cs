@@ -15,7 +15,7 @@ public class Tapa : MonoBehaviour
 
     private PlayerDetector playerDetector;
 
-    public int capacity;
+    public int capacity = 5;
 
     public int penalization;
     private int amountAlreadyIn;
