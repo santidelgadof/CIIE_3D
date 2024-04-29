@@ -11,6 +11,12 @@ public class Tapa : MonoBehaviour
     public KeyCode keyToDrop = KeyCode.E; // Tecla para soltar el item
     public TrashType trashType;
 
+    public AudioSource correctSong;
+
+    public AudioSource wrongSong;
+
+    public AudioSource dropSong;
+
     public GameObject trashBag;
 
     private PlayerDetector playerDetector;
@@ -86,6 +92,7 @@ public class Tapa : MonoBehaviour
             {
                 if (item != null) { /// Drop the item inside the container.                    
                     TrashItem tI = item.GetComponent<TrashItem>();
+                    correctSong.volume = 0.2F;
                     if (SceneManager.GetActiveScene().buildIndex == 1)
                     {
                         if (trashType == TrashType.Inorganic)
@@ -96,12 +103,15 @@ public class Tapa : MonoBehaviour
                                 {
                                     /// Container has enough space.
                                     amountAlreadyIn += 1;
+                                    correctSong.Play();
                                     Destroy(item.gameObject);
                                     UpdateUI();
+                                    
                                 }
                             }
                             else
                             { /// Wrong classification
+                                wrongSong.Play();
                                 amountAlreadyIn -= penalization;
                                 if (amountAlreadyIn < 0)
                                     amountAlreadyIn = 0;
@@ -117,12 +127,14 @@ public class Tapa : MonoBehaviour
                                 {
                                     /// Container has enough space.
                                     amountAlreadyIn += 1;
+                                    correctSong.Play();
                                     Destroy(item.gameObject);
                                     UpdateUI();
                                 }
                             }
                             else
                             { /// Wrong classification
+                                wrongSong.Play();
                                 amountAlreadyIn -= penalization;
                                 if (amountAlreadyIn < 0)
                                     amountAlreadyIn = 0;
@@ -139,12 +151,14 @@ public class Tapa : MonoBehaviour
                             {
                                 /// Container has enough space.
                                 amountAlreadyIn += 1;
+                                correctSong.Play();
                                 Destroy(item.gameObject);
                                 UpdateUI();
                             }
                         }
                         else
                         { /// Wrong classification
+                            wrongSong.Play();
                             amountAlreadyIn -= penalization;
                             if (amountAlreadyIn < 0)
                                 amountAlreadyIn = 0;
@@ -155,17 +169,14 @@ public class Tapa : MonoBehaviour
 
                 } else { /// The player is not carrying a TrashItem.
                     if (amountAlreadyIn == capacity) { /// The container is filled.
-                    Vector3 spawnPosition = transform.position;
-                    
-                    
+                        dropSong.Play();
+                        Vector3 spawnPosition = transform.position;
                         Vector3 localOffset = new Vector3(1f, 0f, 0f);
                         Vector3 worldOffset = transform.TransformDirection(localOffset);
                         spawnPosition += worldOffset;
-                    
-                    
-                    TransformIntoBag(spawnPosition);
-                    amountAlreadyIn = 0;
-                    UpdateUI();
+                        TransformIntoBag(spawnPosition);
+                        amountAlreadyIn = 0;
+                        UpdateUI();
                     }
                 }
                 tapa.SetActive(true);

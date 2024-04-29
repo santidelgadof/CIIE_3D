@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+
+    public AudioSource correctSong;
     private bool isOpen = false;
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
@@ -31,7 +33,8 @@ public class NewBehaviourScript : MonoBehaviour
         
         if (other.CompareTag("TrashBag") || other.CompareTag("bag"))
         {
-            
+            correctSong.volume = 1;
+            correctSong.Play();
             isOpen = true;
             Destroy(other.gameObject);
             player.Point();
