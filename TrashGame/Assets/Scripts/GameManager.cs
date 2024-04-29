@@ -24,7 +24,15 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame() {
         lives.Lives = 5;
+        score.Value = 0;
         SceneManager.LoadScene(1);
+    }
+
+    public void StartEndlessGame()
+    {
+        lives.Lives = 5;
+        score.Value = 0;
+        SceneManager.LoadScene(4);
     }
 
     public void BackToMenu() {

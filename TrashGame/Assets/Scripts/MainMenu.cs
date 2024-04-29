@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject instructionsScreen;
     [SerializeField] GameObject optionsScreen;
     [SerializeField] GameObject leaderBoardScreen;
+    [SerializeField] GameObject GameModeScreen;
     [SerializeField] LeaderBoard LB;
     private void Awake()
     {
@@ -17,8 +18,23 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        GameManager.Instance.StartGame();
+        optionsScreen.SetActive(false);
+        leaderBoardScreen.SetActive(false);
+        instructionsScreen.SetActive(false);
+
+        GameModeScreen.SetActive(!GameModeScreen.activeSelf);
+        //GameManager.Instance.StartGame();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Casual()
+    {
+        GameManager.Instance.StartGame();
+    }
+
+    public void Endless()
+    {
+        GameManager.Instance.StartEndlessGame();
     }
 
     public void Exit()
@@ -30,6 +46,7 @@ public class MainMenu : MonoBehaviour
     {
         optionsScreen.SetActive(false);
         leaderBoardScreen.SetActive(false);
+        GameModeScreen.SetActive(false);
         instructionsScreen.SetActive(!instructionsScreen.activeSelf);
     }
 
@@ -37,6 +54,7 @@ public class MainMenu : MonoBehaviour
     {
         instructionsScreen.SetActive(false);
         leaderBoardScreen.SetActive(false);
+        GameModeScreen.SetActive(false);
         optionsScreen.SetActive(!optionsScreen.activeSelf);
     }
 
@@ -44,6 +62,7 @@ public class MainMenu : MonoBehaviour
     {
         instructionsScreen.SetActive(false);
         optionsScreen.SetActive(false);
+        GameModeScreen.SetActive(false);
         leaderBoardScreen.SetActive(!leaderBoardScreen.activeSelf);
         LB.GetLeaderBoard();
     }

@@ -365,7 +365,14 @@ public class CharacterScript : MonoBehaviour
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = "Score\n" + scoreSo.Value.ToString();
+            if (SceneManager.GetActiveScene().buildIndex == 4) {
+                scoreText.text = scoreSo.Value.ToString();
+            }
+            else
+            {
+                scoreText.text = "Score\n" + scoreSo.Value.ToString();
+            }
+            
         else
             Debug.LogError("Score TextMeshProUGUI reference not set in the inspector.");
     }
