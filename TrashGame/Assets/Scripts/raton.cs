@@ -13,7 +13,7 @@ public class MouseAI : MonoBehaviour
         gameObject.SetActive(false); // Desactivar el ratón al principio
 
         // Llamar a la función para activar el ratón después de un tiempo aleatorio entre 0 y 60 segundos
-        Invoke("ActivateMouse", Random.Range(0f, 20f));
+        Invoke("ActivateMouse", Random.Range(0f, 500f));
     }
 
     void ActivateMouse()

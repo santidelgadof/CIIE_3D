@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Belt : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 2.9f;
     private float beltWidth; 
 
     private float beltHeight;
@@ -31,6 +31,12 @@ public class Belt : MonoBehaviour
     {
         
     }
+
+    public void addSpeed(float sp)
+    {
+        speed += sp;
+    }
+
     /// <summary>
     /// Handles the movement of the items over the belt.
     /// </summary>
