@@ -29,6 +29,9 @@ public class Tapa : MonoBehaviour
 
     private bool isTapaOpen = false; // Variable para rastrear si la tapa está abierta o cerrada
 
+    private Vector3 spawnPosition;
+
+
     
      private void Start()
     {
@@ -153,12 +156,12 @@ public class Tapa : MonoBehaviour
                 } else { /// The player is not carrying a TrashItem.
                     if (amountAlreadyIn == capacity) { /// The container is filled.
                     Vector3 spawnPosition = transform.position;
-                    if (trashType == TrashType.Organic || trashType == TrashType.Inorganic)
-                    {
-                        spawnPosition = transform.position + new Vector3(-3f, 0f, 0f);
-                    } else {
-                        spawnPosition = transform.position + new Vector3(0f, 0f, 0f);
-                    }
+                    
+                    
+                        Vector3 localOffset = new Vector3(1f, 0f, 0f);
+                        Vector3 worldOffset = transform.TransformDirection(localOffset);
+                        spawnPosition += worldOffset;
+                    
                     
                     TransformIntoBag(spawnPosition);
                     amountAlreadyIn = 0;
