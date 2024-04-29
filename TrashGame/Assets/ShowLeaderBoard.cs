@@ -12,7 +12,6 @@ public class ShowLeaderBoard : MonoBehaviour
     private void Start()
     {
         list = leaderList.Lblist;
-        //LbText.text = "name    ----------------------------------->    score\n";
         PrintLeaderBoard();
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalMenu : MonoBehaviour
@@ -14,7 +15,8 @@ public class FinalMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
 
     private int score;
-    private string publicLeaderBoardKey = "b358e015d6cd5fb4fc6aab834193a7613aba9b48fd4c8987fb1428d05456c0c6";
+    private string CasualKey = "b358e015d6cd5fb4fc6aab834193a7613aba9b48fd4c8987fb1428d05456c0c6";
+    private string EndlessKey = "a9402ba04f95fffcfbfc9cc9e2ca09548edb314b35661da1cb2b85418fdd0a16";
 
     private void Awake()
     {
@@ -34,21 +36,22 @@ public class FinalMenu : MonoBehaviour
     public void Submit()
     {
         string username;
+        string key;
         if (name != "FinalWinMenu") username = name;
         else username = "Player";
-        LeaderboardCreator.UploadNewEntry(publicLeaderBoardKey, username, score, ((msg) =>
-        {
-            LeaderboardCreator.ResetPlayer();
-        }));
 
-        /*if (name != null)
+        if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-           leaderList.AddNewScore(name, score);
+            key = EndlessKey;
         }
         else
         {
-            leaderList.AddNewScore(" ", score);
-        }*/
+            key = CasualKey;
+        }
+        LeaderboardCreator.UploadNewEntry(key, username, score, ((msg) =>
+        {
+            LeaderboardCreator.ResetPlayer();
+        }));
 
         gameObject.SetActive(false);
         Time.timeScale = 1f;

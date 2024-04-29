@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject instructionsScreen;
     [SerializeField] GameObject optionsScreen;
     [SerializeField] GameObject leaderBoardScreen;
+    [SerializeField] GameObject CasualLB;
+    [SerializeField] GameObject EndlessLB;
     [SerializeField] GameObject GameModeScreen;
     [SerializeField] LeaderBoard LB;
     private void Awake()
@@ -65,7 +67,18 @@ public class MainMenu : MonoBehaviour
         GameModeScreen.SetActive(false);
         leaderBoardScreen.SetActive(!leaderBoardScreen.activeSelf);
         LB.GetLeaderBoard();
+        LB.GetLeaderBoardEndless();
     }
+
+   
+
+    public void SwitchLeaderBoard()
+    {
+        CasualLB.SetActive(!CasualLB.activeSelf);
+        EndlessLB.SetActive(!EndlessLB.activeSelf);
+    }
+
+    
 
    
 }
