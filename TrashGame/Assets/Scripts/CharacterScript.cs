@@ -219,6 +219,7 @@ public class CharacterScript : MonoBehaviour
             {
                 grabbedObject = closestObject;
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                grabbedObject.GetComponent<BoxCollider>().isTrigger = true;
                 grabOffset = grabbedObject.transform.position - grabPos.position;
                 originalGrabbedObjectPosition = grabbedObject.transform.position;
 
