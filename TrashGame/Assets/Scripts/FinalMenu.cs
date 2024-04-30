@@ -12,7 +12,9 @@ public class FinalMenu : MonoBehaviour
     public FinalMenu Instance;
     [SerializeField] private FloatOs scoreSo;
     [SerializeField] private LeaderBoardData leaderList;
+    [SerializeField] private LivesCounter livesCnt;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private AudioSource mainSong;
 
     private int score;
     private string CasualKey = "b358e015d6cd5fb4fc6aab834193a7613aba9b48fd4c8987fb1428d05456c0c6";
@@ -28,6 +30,10 @@ public class FinalMenu : MonoBehaviour
         Time.timeScale = 0f;
         if (scoreText != null)
         {
+            if (livesCnt.Lives > 0)
+            {
+                scoreSo.Value += livesCnt.Lives * 50;
+            }
             score = (int)scoreSo.Value;
             scoreText.text = score.ToString();
         }
@@ -48,11 +54,12 @@ public class FinalMenu : MonoBehaviour
         {
             key = CasualKey;
         }
-        LeaderboardCreator.UploadNewEntry(key, username, score, ((msg) =>
+        LeaderboardCreator.UploadNewEntry(key, username, score, livesCnt.Lives.ToString(), ((msg) =>
         {
             LeaderboardCreator.ResetPlayer();
         }));
 
+        mainSong.Stop();
         gameObject.SetActive(false);
         Time.timeScale = 1f;
         GameManager.Instance.BackToMenu();
