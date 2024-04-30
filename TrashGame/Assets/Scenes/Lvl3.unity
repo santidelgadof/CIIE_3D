@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -415,7 +415,9 @@ MonoBehaviour:
   Instance: {fileID: 0}
   scoreSo: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
   leaderList: {fileID: 11400000, guid: be90e5f8dcc879840827343aa87ccdce, type: 2}
+  livesCnt: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
   scoreText: {fileID: 2068620836}
+  mainSong: {fileID: 1664671576}
 --- !u!114 &85931168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10346,6 +10348,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649231502}
   m_CullTransparentMesh: 1
+--- !u!82 &1664671576 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2981356650527297995, guid: 65ed720d30781464d96379b051f7ef3c, type: 3}
+  m_PrefabInstance: {fileID: 286251760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1703995460
 GameObject:
   m_ObjectHideFlags: 0
