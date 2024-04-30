@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class MouseAI : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class MouseAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         gameObject.SetActive(false); // Desactivar el ratón al principio
 
-        // Llamar a la función para activar el ratón después de un tiempo aleatorio entre 0 y 60 segundos
-        Invoke("ActivateMouse", Random.Range(0f, 500f));
+        // Llamar a la función para activar el ratón después de un tiempo aleatorio
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+            Invoke("ActivateMouse", Random.Range(0f, 500f));
+        else
+            Invoke("ActivateMouse", Random.Range(0f, 20f));
     }
 
     void ActivateMouse()
