@@ -13,8 +13,8 @@ public class PortalOut : MonoBehaviour
     // Called when another collider exits the trigger collider attached to this object
     private void OnTriggerExit(Collider other)
     {
-        if (characterScript.GetGrabbedObject() != null ) {
-            if (!GameObject.ReferenceEquals(other.gameObject, characterScript.GetGrabbedObject())) {
+        if (characterScript.GetGrabbedObject() != null ) { // objects grabbed
+            if (!GameObject.ReferenceEquals(other.gameObject, characterScript.GetGrabbedObject())) { //grabbed object diferent from collider obj
             // Check if the exiting collider belongs to a TrashItem
                 if (other.CompareTag("TrashItem"))
                 {
@@ -27,7 +27,7 @@ public class PortalOut : MonoBehaviour
                     
                 }
             }
-        } else {
+        } else { // no obj grabbed
             if (other.CompareTag("TrashItem"))
             {
                 // Destroy the TrashItem game object

@@ -245,6 +245,7 @@ public class CharacterScript : MonoBehaviour
                     grabbedObject.transform.position = originalGrabbedObjectPosition;
                 }
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                grabbedObject.GetComponent<BoxCollider>().isTrigger = false;
                 grabbedObject = null;
                 return;
             } 
@@ -255,6 +256,7 @@ public class CharacterScript : MonoBehaviour
                 {
                     // Object is over the belt, so release it
                     grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    grabbedObject.GetComponent<BoxCollider>().isTrigger = false;
                     //Debug.Log("Objeto soltado sobre la cinta: " + grabbedObject.name);
                     grabbedObject = null;
                 }
@@ -380,7 +382,7 @@ public class CharacterScript : MonoBehaviour
 
     public void LoseLife()
     {
-        Debug.Log(lives.Lives);
+        
         if (lives.Lives > 1)
         {
             lives.Lives--;

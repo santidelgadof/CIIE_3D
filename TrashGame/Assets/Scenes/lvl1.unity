@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -606,6 +606,7 @@ MonoBehaviour:
   - {fileID: 277740102}
   - {fileID: 673664203}
   - {fileID: 97421842}
+  belts: []
   speed: 10
   smoothRot: 0.05
   grabbableObjectLayer:
@@ -4705,6 +4706,7 @@ GameObject:
   - component: {fileID: 1200635609}
   - component: {fileID: 1200635613}
   - component: {fileID: 1200635612}
+  - component: {fileID: 1200635614}
   m_Layer: 0
   m_Name: PortalOut
   m_TagString: Untagged
@@ -4807,12 +4809,33 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000002
   m_Height: 2.0000005
   m_Direction: 1
   m_Center: {x: 0.00000005960466, y: -3.3881318e-21, z: -0.00000008940697}
+--- !u!65 &1200635614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200635607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000004, y: 2.0000005, z: 1.0000002}
+  m_Center: {x: 0.00000005960466, y: 0, z: -0.00000008940697}
 --- !u!1 &1231751557
 GameObject:
   m_ObjectHideFlags: 0
