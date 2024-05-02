@@ -1,10 +1,9 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Dan.Main;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+
 
 public class LeaderBoard : MonoBehaviour
 {

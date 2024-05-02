@@ -11,7 +11,6 @@ public class FinalMenu : MonoBehaviour
 {
     public FinalMenu Instance;
     [SerializeField] private FloatOs scoreSo;
-    [SerializeField] private LeaderBoardData leaderList;
     [SerializeField] private LivesCounter livesCnt;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private AudioSource mainSong;
