@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -414,7 +414,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Instance: {fileID: 0}
   scoreSo: {fileID: 11400000, guid: 6249610c97c4a0442a450ca94842d69d, type: 2}
-  leaderList: {fileID: 11400000, guid: be90e5f8dcc879840827343aa87ccdce, type: 2}
   livesCnt: {fileID: 11400000, guid: dd7302485306dce48a6e0c2e4c1a84a1, type: 2}
   scoreText: {fileID: 2068620836}
   mainSong: {fileID: 1034177568}
@@ -7046,6 +7045,8 @@ MonoBehaviour:
   - {fileID: 7415273526459624161, guid: 675ee027266492740871dbd31f76df25, type: 3}
   - {fileID: 100000, guid: 23fc59362ba1e264eb5b636821ad929a, type: 3}
   - {fileID: 1705129010167144, guid: bfa7e8189ab181843b9ac106678a628a, type: 3}
+  - {fileID: 1000013191416304, guid: c48a3ebf277ae9f46bc06489f5850636, type: 3}
+  - {fileID: 1000013191416304, guid: c48a3ebf277ae9f46bc06489f5850636, type: 3}
   spawnTime: 3
 --- !u!136 &1033347498
 CapsuleCollider:
