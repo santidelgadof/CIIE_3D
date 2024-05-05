@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1973,6 +1973,7 @@ GameObject:
   - component: {fileID: 312222437}
   - component: {fileID: 312222436}
   - component: {fileID: 312222435}
+  - component: {fileID: 312222439}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -2022,7 +2023,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a201393dedf1154eac012260de6d7a4, type: 2}
+  - {fileID: 2100000, guid: 330395d672d1ce445b8b1b19f3cda0cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2067,6 +2068,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &312222439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312222434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda61370052bf024b8046a71063bbc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 1a201393dedf1154eac012260de6d7a4, type: 2}
+  - {fileID: 2100000, guid: a2b14fecdd4f0074f9dd77638ee88018, type: 2}
+  - {fileID: 2100000, guid: 330395d672d1ce445b8b1b19f3cda0cb, type: 2}
+  rend: {fileID: 0}
 --- !u!1 &321052367
 GameObject:
   m_ObjectHideFlags: 0
