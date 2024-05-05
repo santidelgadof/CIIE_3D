@@ -15,7 +15,7 @@ public class MouseAI : MonoBehaviour
 
         // Llamar a la función para activar el ratón después de un tiempo aleatorio
         if(SceneManager.GetActiveScene().buildIndex == 4)
-            Invoke("ActivateMouse", Random.Range(0f, 500f));
+            Invoke("ActivateMouse", Random.Range(0f, 100f));
         else
             Invoke("ActivateMouse", Random.Range(0f, 20f));
     }
