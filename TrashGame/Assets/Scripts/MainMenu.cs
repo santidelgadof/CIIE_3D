@@ -18,6 +18,29 @@ public class MainMenu : MonoBehaviour
         Instance = this;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (instructionsScreen.activeSelf)
+            {
+                instructionsScreen.SetActive(false);
+            }
+            else if (optionsScreen.activeSelf)
+            {
+                optionsScreen.SetActive(false);
+            }
+            else if (leaderBoardScreen.activeSelf)
+            {
+                leaderBoardScreen.SetActive(false);
+            }
+            else if (GameModeScreen.activeSelf)
+            {
+                GameModeScreen.SetActive(false);
+            }
+        }
+    }
+
     public void Play()
     {
         optionsScreen.SetActive(false);
