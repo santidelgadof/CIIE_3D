@@ -324,7 +324,7 @@ public class CharacterScript : MonoBehaviour
 
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentVel, smoothRot);
-
+            
             transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
 
             animator.SetFloat("speed", 0.2f);
