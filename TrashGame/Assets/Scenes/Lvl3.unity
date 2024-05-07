@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9048,7 +9048,7 @@ MonoBehaviour:
   correctSong: {fileID: 476193246}
   wrongSong: {fileID: 522158910}
   dropSong: {fileID: 1998289454}
-  trashBag: {fileID: 100000, guid: efbc7aaed080d31418251812fc4cfad8, type: 3}
+  trashBag: {fileID: 919132149155446097, guid: 67dc86b6b71a7c7428ab8cdb27741368, type: 3}
   capacity: 5
   penalization: 2
 --- !u!1001 &1432554015
