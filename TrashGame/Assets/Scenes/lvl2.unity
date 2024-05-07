@@ -4642,7 +4642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c023091e5a3634737a8d268163646780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 0.5
+  minutes: 1.5
   text: {fileID: 1011835589}
   winCanvas: {fileID: 90326847}
 --- !u!114 &1011835589

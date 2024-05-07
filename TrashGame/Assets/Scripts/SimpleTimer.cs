@@ -17,7 +17,7 @@ public class SimpleTimer : MonoBehaviour
 
     void Start()
     {
-        targetTime = minutes * 100f;
+        targetTime = minutes * 60f;
         int wholeMinutes = Mathf.FloorToInt(targetTime / 60);
         int seconds = Mathf.FloorToInt(targetTime % 60);
         string formattedTime = string.Format("{0:00}:{1:00}", wholeMinutes, seconds);
