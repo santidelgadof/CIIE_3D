@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.1341472, b: 0.121078566, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9529,8 +9529,13 @@ MonoBehaviour:
     puntuaci\xF3n. \nEventualmente aparecer\xE1 una rata en escena que debemos matar
     con la escoba que disponemos. De no matarla en menos de 10 segundos perderemos
     parte de la puntuaci\xF3n acumulada.\n\nCONTENEDORES: \nVerde = Vidrio   //  
-    Marr\xF3n = Org\xE1nico   //   Azul =Papel   //   Amarillo = Pl\xE1sicos\nCONTROLES:
-    \nTeclas WASD movimiento de personaje. \nTecla E para agarrar y soltar objetos."
+    Marr\xF3n = Org\xE1nico   //   Azul =Papel   //   Amarillo = Pl\xE1sicos\n\nCONTROLES:
+    \nTeclas WASD movimiento de personaje. \nTecla E para agarrar y soltar objetos.\nTecla
+    F para aplastar a la rata al tener la escoba en la mano\n\nMODOS DE JUEGO:\nCasual
+    -> Modo principal que dispone de 3 niveles y en el que se obtiene la victoria
+    al acabar el \xFAltimo nivel con alguna vida restante.\nEndless -> Modo adicional
+    en el que el objetivo es aguantar lo m\xE1ximo posible y conseguir la mayor cantidad
+    de puntos. Se pierde al quedarse sin vidas."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
