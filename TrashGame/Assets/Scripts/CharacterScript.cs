@@ -219,7 +219,7 @@ public class CharacterScript : MonoBehaviour
             {
                 grabbedObject = closestObject;
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-                if(grabbedObject.CompareTag("TrashItem"))
+                if(grabbedObject.CompareTag("TrashItem") || grabbedObject.CompareTag("bag"))
                     grabbedObject.GetComponent<BoxCollider>().isTrigger = true;
                 grabOffset = grabbedObject.transform.position - grabPos.position;
                 originalGrabbedObjectPosition = grabbedObject.transform.position;
@@ -239,14 +239,14 @@ public class CharacterScript : MonoBehaviour
         if (Physics.Raycast(grabbedObject.transform.position, Vector3.down, out hit))
         {   
             // Si el objeto tiene la etiqueta "Escoba" o "bag", lo soltamos independientemente de su posición
-            if (grabbedObject.CompareTag("escoba")||grabbedObject.CompareTag("bag") && !hit.collider.CompareTag("Belt"))
+            if (grabbedObject.CompareTag("escoba") || grabbedObject.CompareTag("bag") && !hit.collider.CompareTag("Belt"))
             {
                 if (grabbedObject.CompareTag("escoba"))
                 {
                     grabbedObject.transform.position = originalGrabbedObjectPosition;
                 }
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                if (grabbedObject.CompareTag("TrashItem"))
+                if (grabbedObject.CompareTag("bag"))
                     grabbedObject.GetComponent<BoxCollider>().isTrigger = false;
                 grabbedObject = null;
                 return;
